@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Logica;
+package Persistencia;
 
 
+import Dominio.Producto;
 import Dominio.Productor;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -30,25 +31,6 @@ public class ProductorDAO extends BaseDAO<Productor>{
        productor.insertOne(entidad);
     }
 
-    @Override
-    public void eliminar(Productor entidad) throws DAOException {
-         MongoCollection<Productor> coleccionP = this.getCollection();
-        // primera forma de hacerlo como lo habiamos visto
-        //Document filtroEliminacion = new Document("_id", entidad.getId());
-        //coleccionP.deleteOne(filtroEliminacion);
-        //Si lo hacemos directo con los filters:
-        coleccionP.deleteOne(Filters.eq("_id", entidad.getId()));
-    }
-
-    @Override
-    public void actualizar(Productor entidad) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Productor buscarPorID(ObjectId id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public ArrayList<Productor> buscarTodos() {
@@ -63,7 +45,7 @@ public class ProductorDAO extends BaseDAO<Productor>{
 
    @Override
     public MongoCollection<Productor> getCollection() {
-        MongoDatabase db = this.getMongoDB("residuosBD");
+        MongoDatabase db= Conexion.getInstance();
         MongoCollection<Productor> colleccionProductor = db.getCollection("productor", Productor.class);
         return colleccionProductor;
     }

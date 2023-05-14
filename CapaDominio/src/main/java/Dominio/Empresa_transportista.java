@@ -12,17 +12,26 @@ import org.bson.types.ObjectId;
  * @author dany
  */
 public class Empresa_transportista {
-    
+
     private ObjectId id;
-    private int traslados_totales;
-    
-    public Empresa_transportista(){
-        
+    private String nombre;
+    private String tipo_traslado;
+    private float costoKM;
+
+    public Empresa_transportista() {
     }
 
-    public Empresa_transportista(ObjectId id, int traslados_totales) {
+    public Empresa_transportista(ObjectId id, String nombre, String tipo_traslado, float costoKM) {
         this.id = id;
-        this.traslados_totales = traslados_totales;
+        this.nombre = nombre;
+        this.tipo_traslado = tipo_traslado;
+        this.costoKM = costoKM;
+    }
+
+    public Empresa_transportista(String nombre, String tipo_traslado, float costoKM) {
+        this.nombre = nombre;
+        this.tipo_traslado = tipo_traslado;
+        this.costoKM = costoKM;
     }
 
     public ObjectId getId() {
@@ -33,13 +42,28 @@ public class Empresa_transportista {
         this.id = id;
     }
 
-    public int getTraslados_totales() {
-        return traslados_totales;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTraslados_totales(int traslados_totales) {
-        this.traslados_totales = traslados_totales;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    
-    
+
+    public String getTipo_traslado() {
+        return tipo_traslado;
+    }
+
+    public void setTipo_traslado(String tipo_traslado) {
+        this.tipo_traslado = tipo_traslado;
+    }
+
+    public float getCostoKM() {
+        return costoKM;
+    }
+
+    public void setCostoKM(float costoKM) {
+        this.costoKM = costoKM;
+    }
+
 }

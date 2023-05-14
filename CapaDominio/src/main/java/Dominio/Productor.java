@@ -29,6 +29,13 @@ public class Productor {
         this.numeroIdentificador = numeroIdentificador;
     }
 
+    public Productor(String nombreEmpresa, String nombreEncargado, int numeroIdentificador) {
+        this.nombreEmpresa = nombreEmpresa;
+        this.nombreEncargado = nombreEncargado;
+        this.numeroIdentificador = numeroIdentificador;
+    }
+    
+
     public ObjectId getId() {
         return id;
     }

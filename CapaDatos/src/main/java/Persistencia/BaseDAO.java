@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Logica;
+package Persistencia;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
@@ -22,23 +22,28 @@ import org.bson.types.ObjectId;
  */
 public abstract class BaseDAO<T> {
 
-    public MongoClient getConexionMongoClient() {
-        //Creamos un proveedor de codecs para las clases POJOs
-        CodecRegistry pojoCodecRegistry = fromRegistries(MongoClient.getDefaultCodecRegistry(), fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-        
-        //Creamos la configuración del cliente de MongoDB      
-        MongoClient mongoC = new MongoClient("localhost",MongoClientOptions.builder().codecRegistry(pojoCodecRegistry).build());
-        return mongoC;
-    }
 
-    public MongoDatabase getMongoDB(String nomBD) {
-        return getConexionMongoClient().getDatabase(nomBD);
-    }
-    
+    /**
+     * Guarda una entidad de tipo User en la base de datos MongoDB.
+     *
+     * @param entidad La entidad a guardar.
+     */
     public abstract void guardar(T entidad);
-    public abstract void eliminar(T entidad) throws DAOException;
-    public abstract void actualizar (T entidad) throws DAOException;
-    public abstract  T buscarPorID(ObjectId id);
+
+    
+
+
+    /**
+     * Busca todas las entidades en la base de datos MongoDB.
+     *
+     * @return Una lista de todas las entidades encontradas.
+     */
     public abstract ArrayList<T> buscarTodos();
+
+    /**
+     * Coleccion de la entidad
+     *
+     * @return collection
+     */
     public abstract MongoCollection<T> getCollection();
 }

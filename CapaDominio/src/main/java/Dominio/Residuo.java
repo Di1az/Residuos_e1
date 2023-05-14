@@ -31,6 +31,14 @@ public class Residuo {
         this.productor = productor;
     }
 
+    public Residuo(int codigo, String tipo, String descripcion, Productor productor) {
+        this.codigo = codigo;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+        this.productor = productor;
+    }
+    
+
     public ObjectId getId() {
         return id;
     }
