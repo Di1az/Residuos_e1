@@ -16,10 +16,10 @@ import java.util.List;
  * @author oscar
  */
 public interface IDatos {
-    public void guardarProducto(Productor productor);
+    public void guardarProducto(Producto producto);
     public List<Producto> listaProducto();
     
-    public Empresa_transportista guardarEmpresa(Empresa_transportista empresa_transportista);
+    public void guardarEmpresa(Empresa_transportista empresa_transportista);
     public List<Empresa_transportista> listaEmpresas();
     
     public void guardarProductor(Productor productor);

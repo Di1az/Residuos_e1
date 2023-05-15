@@ -4,6 +4,8 @@
  */
 package com.mycompany.capalogica;
 import Dominio.Producto;
+import Persistencia.FachadaDatos;
+import Persistencia.IDatos;
 import java.util.List;
 
 /**
@@ -11,10 +13,13 @@ import java.util.List;
  * @author oscar
  */
 public class ControlProducto {
-    public Producto guardarProducto(Producto producto){
-      return null;  
+    private IDatos datos;
+    public void guardarProducto(Producto producto){
+      datos = new FachadaDatos();
+        datos.guardarProducto(producto); 
     }
     public List<Producto> buscarTodos(){
-        return null;
+        datos = new FachadaDatos();
+        return datos.listaProducto();
     }
 }

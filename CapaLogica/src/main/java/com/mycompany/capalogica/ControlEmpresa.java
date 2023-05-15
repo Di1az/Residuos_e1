@@ -6,6 +6,8 @@ package com.mycompany.capalogica;
 
 import Dominio.Empresa_transportista;
 import Dominio.Producto;
+import Persistencia.FachadaDatos;
+import Persistencia.IDatos;
 import java.util.List;
 
 /**
@@ -13,10 +15,13 @@ import java.util.List;
  * @author oscar
  */
 public class ControlEmpresa {
-    public Empresa_transportista guardarEmpresa(Empresa_transportista empresa){
-      return null;  
+    private IDatos datos;
+    public void guardarEmpresa(Empresa_transportista empresa){
+       datos = new FachadaDatos();
+       datos.guardarEmpresa(empresa);
     }
     public List<Empresa_transportista> buscarTodos(){
-        return null;
+         datos = new FachadaDatos();
+         return datos.listaEmpresas();
     }
 }

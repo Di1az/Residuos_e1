@@ -15,62 +15,67 @@ import java.util.List;
  *
  * @author oscar
  */
-public class FachadaDatos implements IDatos{
+public class FachadaDatos implements IDatos {
 
     @Override
-    public void guardarProducto(Productor productor) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void guardarProducto(Producto producto) {
+        ProductoDAO productoDao = new ProductoDAO();
+        productoDao.guardar(producto);
     }
 
     @Override
     public List<Producto> listaProducto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ProductoDAO productoDao = new ProductoDAO();
+        return productoDao.buscarTodos();
     }
 
     @Override
-    public Empresa_transportista guardarEmpresa(Empresa_transportista empresa_transportista) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void guardarEmpresa(Empresa_transportista empresa_transportista) {
+        empresaDAO empresaDao = new empresaDAO();
+        empresaDao.guardar(empresa_transportista);
     }
 
     @Override
     public List<Empresa_transportista> listaEmpresas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        empresaDAO empresa = new empresaDAO();
+        return empresa.buscarTodos();
     }
 
     @Override
     public void guardarProductor(Productor productor) {
-        ProductorDAO productorDao= new ProductorDAO();
+        ProductorDAO productorDao = new ProductorDAO();
         productorDao.guardar(productor);
-        
+
     }
 
     @Override
     public List<Productor> listaProductor() {
-        ProductorDAO productorDao= new ProductorDAO();
-       return productorDao.buscarTodos();
+        ProductorDAO productorDao = new ProductorDAO();
+        return productorDao.buscarTodos();
     }
 
     @Override
     public void guardarResiduo(Residuo residuo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ResiduosDAO residuosDAO = new ResiduosDAO();
+        residuosDAO.guardar(residuo);
     }
 
     @Override
     public List<Residuo> listaResiduo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ResiduosDAO residuosDAO = new ResiduosDAO();
+        return residuosDAO.buscarTodos();
     }
 
     @Override
     public void guardarTraslado(Traslado traslado) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        TrasladoDAO trasladoDAO=new TrasladoDAO();
+        trasladoDAO.guardar(traslado);
     }
 
     @Override
     public List<Traslado> listaTraslado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        TrasladoDAO trasladoDAO=new TrasladoDAO();
+        return trasladoDAO.buscarTodos();
     }
 
-   
-
-    
 }

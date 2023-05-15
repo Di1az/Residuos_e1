@@ -4,6 +4,8 @@
  */
 package com.mycompany.capalogica;
 import Dominio.Residuo;
+import Persistencia.FachadaDatos;
+import Persistencia.IDatos;
 import java.util.List;
 
 /**
@@ -11,10 +13,13 @@ import java.util.List;
  * @author oscar
  */
 public class ControlResiduos {
-    public Residuo guardarResiduo(Residuo residuo){
-      return null;  
+    private IDatos datos;
+    public void guardarResiduo(Residuo residuo){
+      datos=new FachadaDatos();
+      datos.guardarResiduo(residuo);
     }
     public List<Residuo> buscarTodos(){
-        return null;
+        datos=new FachadaDatos();
+        return datos.listaResiduo();
     }
 }
