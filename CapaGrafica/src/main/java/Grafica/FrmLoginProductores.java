@@ -28,14 +28,14 @@ public class FrmLoginProductores extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        lblPregunta = new javax.swing.JLabel();
+        btnRegistro = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lblIdentificadorProductor = new javax.swing.JLabel();
         lblNombreProductor = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtNumIdentificador = new javax.swing.JTextField();
+        txtNombreProductor = new javax.swing.JTextField();
+        btnLogin = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
@@ -49,12 +49,17 @@ public class FrmLoginProductores extends javax.swing.JFrame {
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel1.setText("¿No esta registrado el productor?");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+        lblPregunta.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lblPregunta.setText("¿No esta registrado el productor?");
+        jPanel3.add(lblPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
-        jButton2.setText("Click Aquí");
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
+        btnRegistro.setText("Click Aquí");
+        btnRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 360, 150));
 
@@ -69,16 +74,21 @@ public class FrmLoginProductores extends javax.swing.JFrame {
         lblNombreProductor.setText("Nombre productor");
         jPanel2.add(lblNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtNumIdentificador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNumIdentificadorActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 190, 30));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 190, 30));
+        jPanel2.add(txtNumIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 190, 30));
+        jPanel2.add(txtNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 190, 30));
 
-        jButton1.setText("Log in");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 100, 40));
+        btnLogin.setText("Log in");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 100, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 770, 190));
 
@@ -104,9 +114,25 @@ public class FrmLoginProductores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNumIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumIdentificadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNumIdentificadorActionPerformed
+
+    private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        FrmRegistroProductores registro = new FrmRegistroProductores();
+        registro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegistroActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        FrmMenuPrincipal menuP = new FrmMenuPrincipal();
+        menuP.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,16 +172,16 @@ public class FrmLoginProductores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnRegistro;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblIdentificadorProductor;
     private javax.swing.JLabel lblNombreProductor;
+    private javax.swing.JLabel lblPregunta;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txtNombreProductor;
+    private javax.swing.JTextField txtNumIdentificador;
     // End of variables declaration//GEN-END:variables
 }

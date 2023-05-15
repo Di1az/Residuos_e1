@@ -27,15 +27,17 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btnRegresar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        lblNombreEmpresa = new javax.swing.JLabel();
+        lblNombreProductor = new javax.swing.JLabel();
+        lblNumeroIdentificador = new javax.swing.JLabel();
+        txtNombreEmpresa = new javax.swing.JTextField();
+        txtNombreProductor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        btnAceptar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,41 +46,54 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Nombre Empresa");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 63, -1, -1));
+        lblNombreEmpresa.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNombreEmpresa.setText("Nombre Empresa");
+        jPanel2.add(lblNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 63, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setText("Nombre Productor");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        lblNombreProductor.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNombreProductor.setText("Nombre Productor");
+        jPanel2.add(lblNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setText("Número Identificador");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        lblNumeroIdentificador.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNumeroIdentificador.setText("Número Identificador");
+        jPanel2.add(lblNumeroIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNombreEmpresaActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 250, 30));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 250, 30));
+        jPanel2.add(txtNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 250, 30));
+        jPanel2.add(txtNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 250, 30));
 
         jLabel3.setText("aqui va");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 230, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 640, 370));
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 0));
+        jLabel5.setText("Registro de productores");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
-        jButton2.setText("jButton2");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, -1, -1));
+        btnAceptar.setText("Aceptar");
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, -1, -1));
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame 2.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, -1, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registroProducto 1.png"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
@@ -87,9 +102,17 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNombreEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpresaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNombreEmpresaActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        FrmLoginProductores login = new FrmLoginProductores();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,15 +152,17 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblNombreEmpresa;
+    private javax.swing.JLabel lblNombreProductor;
+    private javax.swing.JLabel lblNumeroIdentificador;
+    private javax.swing.JTextField txtNombreEmpresa;
+    private javax.swing.JTextField txtNombreProductor;
     // End of variables declaration//GEN-END:variables
 }

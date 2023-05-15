@@ -26,24 +26,84 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnSolicitudEmpresas = new javax.swing.JButton();
+        btnRegistrarProductos = new javax.swing.JButton();
+        btnConsultaTraslados = new javax.swing.JButton();
+        lblMenuPrincipal = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
         setResizable(false);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSolicitudEmpresas.setText("Solicitud Empresa");
+        btnSolicitudEmpresas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitudEmpresasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSolicitudEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 130, -1, -1));
+
+        btnRegistrarProductos.setText("Registrar Productos");
+        btnRegistrarProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarProductosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegistrarProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 220, -1, -1));
+
+        btnConsultaTraslados.setText("Consulta Traslados");
+        btnConsultaTraslados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaTrasladosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnConsultaTraslados, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, -1, -1));
+
+        lblMenuPrincipal.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblMenuPrincipal.setForeground(new java.awt.Color(102, 102, 0));
+        lblMenuPrincipal.setText("Menú Principal");
+        jPanel1.add(lblMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSolicitudEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudEmpresasActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        FrmSeleccionEmpresa seleccion= new FrmSeleccionEmpresa();
+        seleccion.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSolicitudEmpresasActionPerformed
+
+    private void btnRegistrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProductosActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        FrmRegistrarProductos registroProductos= new FrmRegistrarProductos();
+        registroProductos.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegistrarProductosActionPerformed
+
+    private void btnConsultaTrasladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaTrasladosActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        FrmConsultaTraslados traslados= new FrmConsultaTraslados();
+        traslados.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnConsultaTrasladosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -82,5 +142,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultaTraslados;
+    private javax.swing.JButton btnRegistrarProductos;
+    private javax.swing.JButton btnSolicitudEmpresas;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblMenuPrincipal;
     // End of variables declaration//GEN-END:variables
 }
