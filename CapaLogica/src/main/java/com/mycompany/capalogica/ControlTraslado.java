@@ -14,14 +14,23 @@ import java.util.List;
  * @author oscar
  */
 public class ControlTraslado {
-
+    //Atributo de Interfaz datos
     private IDatos datos;
 
+    /**
+     * Método que guarda traslados e inicializa el atributo de la clase 
+     * con una instancia de fachadaDatos.
+     * @param traslado parámetro traslado
+     */
     public void guardarTraslado(Traslado traslado) {
         datos = new FachadaDatos();
         datos.guardarTraslado(traslado);
     }
 
+    /**
+     * Método que busca todos los residuos en una lista de traslados.
+     * @return regresa una lista de Traslado
+     */
     public List<Traslado> buscarTodos() {
         datos = new FachadaDatos();
         return datos.listaTraslado();
