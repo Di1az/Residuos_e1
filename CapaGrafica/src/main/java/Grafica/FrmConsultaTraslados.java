@@ -49,7 +49,7 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 790, 420));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 840, 460));
 
         lblSolicitud.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblSolicitud.setForeground(new java.awt.Color(102, 102, 0));

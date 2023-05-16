@@ -31,44 +31,54 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         btnRegistrarProductos = new javax.swing.JButton();
         btnConsultaTraslados = new javax.swing.JButton();
         lblMenuPrincipal = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnSolicitudEmpresas.setBackground(new java.awt.Color(255, 255, 255));
+        btnSolicitudEmpresas.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnSolicitudEmpresas.setText("Solicitud Empresa");
+        btnSolicitudEmpresas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSolicitudEmpresas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSolicitudEmpresasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSolicitudEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, -1, -1));
+        jPanel1.add(btnSolicitudEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 200, 70));
 
+        btnRegistrarProductos.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarProductos.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnRegistrarProductos.setText("Registrar Productos");
+        btnRegistrarProductos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegistrarProductos.setPreferredSize(new java.awt.Dimension(159, 29));
         btnRegistrarProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarProductosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrarProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, -1, -1));
+        jPanel1.add(btnRegistrarProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 200, 70));
 
+        btnConsultaTraslados.setBackground(new java.awt.Color(255, 255, 255));
+        btnConsultaTraslados.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnConsultaTraslados.setText("Consulta Traslados");
+        btnConsultaTraslados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnConsultaTraslados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultaTrasladosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConsultaTraslados, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, -1, -1));
+        jPanel1.add(btnConsultaTraslados, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 200, 70));
 
         lblMenuPrincipal.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         lblMenuPrincipal.setForeground(new java.awt.Color(102, 102, 0));
         lblMenuPrincipal.setText("Menú Principal");
         jPanel1.add(lblMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame 4.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame 4.png"))); // NOI18N
+        jPanel1.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,8 +159,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultaTraslados;
     private javax.swing.JButton btnRegistrarProductos;
     private javax.swing.JButton btnSolicitudEmpresas;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblMenuPrincipal;
     // End of variables declaration//GEN-END:variables
 }
