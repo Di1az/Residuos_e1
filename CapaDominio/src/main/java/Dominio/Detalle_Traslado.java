@@ -12,41 +12,76 @@ import org.bson.types.ObjectId;
  * @author dany
  */
 public class Detalle_Traslado {
-    
+    //Atributo de clase id
     private ObjectId id;
+    //Atributo de clase numeroVehiculos
     private int numeroVehiculos;
+    //Atributo de clase totalProductos
     private int totalProductos;
     
+    /**
+     * Método constructor vacío de la clase.
+     */
     public Detalle_Traslado(){
         
     }
 
+    /**
+     * Método constructor que inicializa los atributos.
+     * @param id parámetro id
+     * @param numeroVehiculos párametro numeroVehiculos
+     * @param totalProductos párametro totalProductos
+     */
     public Detalle_Traslado(ObjectId id, int numeroVehiculos, int totalProductos) {
         this.id = id;
         this.numeroVehiculos = numeroVehiculos;
         this.totalProductos = totalProductos;
     }
 
+    /**
+     * Método que obtiene el id.
+     * @return regresa id
+     */
     public ObjectId getId() {
         return id;
     }
 
+    /**
+     * Método que ingresa el id.
+     * @param id parámetro id
+     */
     public void setId(ObjectId id) {
         this.id = id;
     }
 
+    /**
+     * Método que obtiene el número de vehiculos
+     * @return regresa numeroVehiculos
+     */
     public int getNumeroVehiculos() {
         return numeroVehiculos;
     }
 
+    /**
+     * Método que ingresa el número de vehiculos
+     * @param numeroVehiculos párametro de numero de Vehiculos
+     */
     public void setNumeroVehiculos(int numeroVehiculos) {
         this.numeroVehiculos = numeroVehiculos;
     }
 
+    /**
+     * Método que obtiene el número total de productos.
+     * @return regresa el número total de productos.
+     */
     public int getTotalProductos() {
         return totalProductos;
     }
 
+    /**
+     * Método que ingresa el número total de productos.
+     * @param totalProductos párametro del número total de productos
+     */
     public void setTotalProductos(int totalProductos) {
         this.totalProductos = totalProductos;
     }

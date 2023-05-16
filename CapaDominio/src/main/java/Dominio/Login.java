@@ -9,6 +9,7 @@ package Dominio;
  * @author hoshi
  */
 public class Login {
+    //Atributo numero identificador
     Registro numeroIdentificador;
     
 }

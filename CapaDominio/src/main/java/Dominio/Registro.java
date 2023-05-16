@@ -10,7 +10,9 @@ package Dominio;
  */
 public class Registro {
     
+    //Atributos nombre Empresa y nombre Productor
     private String nombreEmpresa, nombreProductor;
+    //Atributos numero Investigador
     private int numeroInvestigador;
     
 }
