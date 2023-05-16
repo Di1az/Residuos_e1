@@ -12,15 +12,15 @@
             <version>RELEASE125</version>
     </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>CapaLogica</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.mycompany</groupId>
             <artifactId>CapaDatos</artifactId>
             <version>proyecto2</version>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.mycompany.capalogica</groupId>
+            <artifactId>CapaLogica</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
     

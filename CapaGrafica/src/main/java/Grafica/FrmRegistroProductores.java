@@ -4,17 +4,51 @@
  */
 package Grafica;
 
+import Dominio.Productor;
+import com.mycompany.capalogica.FachadaLogica;
+import com.mycompany.capalogica.ILogica;
+import java.util.Random;
+
 /**
  *
  * @author hoshi
  */
 public class FrmRegistroProductores extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmRegistroProductores
-     */
+    private int numIdentificador;
+    private ILogica log;
+            
     public FrmRegistroProductores() {
         initComponents();
+        Random random = new Random();
+        numIdentificador=random.nextInt(1000);
+        jLabel3.setText(String.valueOf(numIdentificador));
+        log = new FachadaLogica();
+    }
+    
+    public void registrarProductor(){
+        Productor p = new Productor();
+        p.setNombreEmpresa(txtNombreEmpresa.getText());
+        System.out.println(txtNombreProductor.getText());
+        p.setNombreEncargado(txtNombreProductor.getText());
+        p.setNumeroIdentificador(numIdentificador);
+        log.guardarProductor(p);
+        
+    }
+    
+    /**
+     * Método de validación que solo permite letras y el espacio
+     *
+     * @param evento evt
+     */
+    public void validarNombre(java.awt.event.KeyEvent evento) {
+        if (evento.getKeyChar() >= 33 && evento.getKeyChar() <= 64
+                || evento.getKeyChar() >= 91 && evento.getKeyChar() <= 96
+                || evento.getKeyChar() >= 123 && evento.getKeyChar() <= 127) {
+
+            evento.consume();
+
+        }
     }
 
     /**
@@ -74,7 +108,23 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
                 txtNombreEmpresaActionPerformed(evt);
             }
         });
+        txtNombreEmpresa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreEmpresaKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 250, 30));
+
+        txtNombreProductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProductorActionPerformed(evt);
+            }
+        });
+        txtNombreProductor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreProductorKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 250, 30));
 
         jLabel3.setText("aqui va");
@@ -88,6 +138,11 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, -1, -1));
 
         btnCancelar.setText("Cancelar");
@@ -103,7 +158,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpresaActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtNombreEmpresaActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -113,6 +168,22 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        this.registrarProductor();
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void txtNombreProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProductorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProductorActionPerformed
+
+    private void txtNombreEmpresaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpresaKeyTyped
+        validarNombre(evt);
+    }//GEN-LAST:event_txtNombreEmpresaKeyTyped
+
+    private void txtNombreProductorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductorKeyTyped
+        validarNombre(evt);
+    }//GEN-LAST:event_txtNombreProductorKeyTyped
 
     /**
      * @param args the command line arguments
