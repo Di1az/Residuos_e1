@@ -9,6 +9,7 @@ import Dominio.Producto;
 import Dominio.Productor;
 import Dominio.Residuo;
 import Dominio.Traslado;
+import com.mongodb.client.MongoCollection;
 import java.util.List;
 
 /**
@@ -30,6 +31,11 @@ public interface IDatos {
     
     public void guardarTraslado(Traslado traslado);
     public List<Traslado> listaTraslado();
+    
+    public Productor buscarPorID(Object id);
+    
+    public MongoCollection<Productor> obtenerColeccion();
+      
     
     
 }

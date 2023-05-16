@@ -9,6 +9,9 @@ import Dominio.Producto;
 import Dominio.Productor;
 import Dominio.Residuo;
 import Dominio.Traslado;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.eq;
 import java.util.List;
 
 /**
@@ -77,5 +80,20 @@ public class FachadaDatos implements IDatos {
         TrasladoDAO trasladoDAO=new TrasladoDAO();
         return trasladoDAO.buscarTodos();
     }
+    
+    @Override
+    public MongoCollection<Productor> obtenerColeccion() {
+        MongoDatabase db = Conexion.getInstance();
+        MongoCollection<Productor> coleccionContinentes = db.getCollection("Productor", Productor.class);
+        return coleccionContinentes;
+    }
+    
+    @Override
+    public Productor buscarPorID(Object id) {
+        Productor productor = obtenerColeccion().find(eq("_id", id)).first();
+        return productor;
+    }
 
+    
+    
 }
