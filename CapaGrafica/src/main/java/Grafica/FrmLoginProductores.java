@@ -4,17 +4,48 @@
  */
 package Grafica;
 
+import Dominio.Productor;
+import com.mycompany.capalogica.ILogica;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author hoshi
  */
 public class FrmLoginProductores extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmLoginProductores
-     */
+    private ILogica log;
+    Productor p = new Productor();
+    
     public FrmLoginProductores() {
         initComponents();
+    }
+    
+    /*
+    public void ingresarProductor(){
+        
+        if(txtNumIdentificador.getText().equals(log.buscarPorNum(p.getNumeroIdentificador())) && 
+                txtNombreProductor.getText().equals(log.buscarPorNombre(p.getNombreEncargado()))){
+            this.setVisible(false);
+            FrmRegistroProductores registro = new FrmRegistroProductores();
+            registro.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Usuario o número inválido");
+        }
+            
+    }*/
+    
+    public void ingresarProductor() {
+        if (txtNumIdentificador.getText().equals(String.valueOf(log.buscarPorNum(p.getNumeroIdentificador())))
+                && txtNombreProductor.getText().equals(String.valueOf(log.buscarPorNombre(p.getNombreEncargado())))) {
+            this.setVisible(false);
+            FrmRegistroProductores registro = new FrmRegistroProductores();
+            registro.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario o número inválido");
+        }
     }
 
     /**
@@ -128,10 +159,7 @@ public class FrmLoginProductores extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        FrmMenuPrincipal menuP = new FrmMenuPrincipal();
-        menuP.setVisible(true);
-        this.dispose();
+        this.ingresarProductor();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

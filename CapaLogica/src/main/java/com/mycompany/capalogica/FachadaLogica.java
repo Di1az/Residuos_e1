@@ -9,6 +9,10 @@ import Dominio.Producto;
 import Dominio.Productor;
 import Dominio.Residuo;
 import Dominio.Traslado;
+import Persistencia.Conexion;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.eq;
 
 /**
  *
@@ -49,6 +53,31 @@ public class FachadaLogica implements ILogica{
         Productor productor=new Productor("Unilever", "Oscar Valenzuela", 100503);
         Residuo residuo1= new Residuo(1111, "Plomo", "Metal pesado", productor);
         mr.guardarResiduo(residuo1);
+    }
+    
+    @Override
+    public MongoCollection<Productor> obtenerColeccion() {
+        MongoDatabase db = Conexion.getInstance();
+        MongoCollection<Productor> coleccionContinentes = db.getCollection("Productor", Productor.class);
+        return coleccionContinentes;
+    }
+    
+    @Override
+    public Productor buscarPorID(Object id) {
+        Productor productor = obtenerColeccion().find(eq("_id", id)).first();
+        return productor;
+    }
+
+    @Override
+    public Productor buscarPorNum(Object numeroIdentificador ) {
+        Productor productor = obtenerColeccion().find(eq("numeroIdentificador", numeroIdentificador)).first();
+        return productor;
+    }
+
+    @Override
+    public Productor buscarPorNombre(Object nombreEncargado) {
+        Productor productor = obtenerColeccion().find(eq("nombreEncargado", nombreEncargado)).first();
+        return productor;
     }
 
     
