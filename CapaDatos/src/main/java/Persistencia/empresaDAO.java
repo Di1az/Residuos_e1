@@ -23,8 +23,6 @@ public class empresaDAO extends BaseDAO<Empresa_transportista>{
        empresa.insertOne(entidad);
     }
 
-   
-
     @Override
     public ArrayList<Empresa_transportista> buscarTodos() {
         MongoCollection<Empresa_transportista> coleccionE = this.getCollection();
@@ -43,5 +41,24 @@ public class empresaDAO extends BaseDAO<Empresa_transportista>{
         return empresa;
     }
     
+    public ArrayList<Empresa_transportista> buscarTipoTraslado() {
+        MongoCollection<Empresa_transportista> coleccionE = this.getCollection();
+        MongoCursor<Empresa_transportista> coleccionEm = coleccionE.find().iterator();
+        ArrayList<Empresa_transportista> listaE = new ArrayList<>();
+        while (coleccionEm.hasNext()) {
+            listaE.add(coleccionEm.next());
+        }
+        return listaE;
+    }
+    
+    public ArrayList<Empresa_transportista> buscarCostoKm() {
+        MongoCollection<Empresa_transportista> coleccionE = this.getCollection();
+        MongoCursor<Empresa_transportista> coleccionEm = coleccionE.find().iterator();
+        ArrayList<Empresa_transportista> listaE = new ArrayList<>();
+        while (coleccionEm.hasNext()) {
+            listaE.add(coleccionEm.next());
+        }
+        return listaE;
+    }
     
 }

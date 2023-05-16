@@ -16,6 +16,12 @@
             <artifactId>CapaLogica</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.mycompany</groupId>
+            <artifactId>CapaDatos</artifactId>
+            <version>proyecto2</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     
     <properties>

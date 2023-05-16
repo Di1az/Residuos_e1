@@ -30,9 +30,6 @@ public abstract class BaseDAO<T> {
      */
     public abstract void guardar(T entidad);
 
-    
-
-
     /**
      * Busca todas las entidades en la base de datos MongoDB.
      *
