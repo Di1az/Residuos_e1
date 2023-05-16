@@ -16,12 +16,20 @@ import java.util.ArrayList;
  */
 public class TrasladoDAO extends BaseDAO<Traslado>{
 
+    /**
+     * 
+     * @param entidad parámetro entidad
+     */
     @Override
     public void guardar(Traslado entidad) {
         MongoCollection<Traslado> traslado= this.getCollection();
        traslado.insertOne(entidad);
     }
 
+    /**
+     * 
+     * @return regresa una lista de traslados
+     */
     @Override
     public ArrayList<Traslado> buscarTodos() {
          MongoCollection<Traslado> coleccionT = this.getCollection();
@@ -33,6 +41,10 @@ public class TrasladoDAO extends BaseDAO<Traslado>{
         return listaT;
     }
 
+    /**
+     * 
+     * @return regresa una coleccion de residuos.
+     */
     @Override
     public MongoCollection<Traslado> getCollection() {
         MongoDatabase db= Conexion.getInstance();

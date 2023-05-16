@@ -22,7 +22,10 @@ import org.bson.types.ObjectId;
  */
 public class ResiduosDAO extends BaseDAO<Residuo>{
 
-    
+    /**
+     * 
+     * @param entidad parámetro entidad
+     */
     @Override
     public void guardar(Residuo entidad) {
        MongoCollection<Residuo> residuo= this.getCollection();
@@ -30,7 +33,10 @@ public class ResiduosDAO extends BaseDAO<Residuo>{
     }
 
    
-
+    /**
+     * 
+     * @return regresa una lista de residuos.
+     */
     @Override
     public ArrayList<Residuo> buscarTodos() {
         MongoCollection<Residuo> coleccionR = this.getCollection();
@@ -42,6 +48,10 @@ public class ResiduosDAO extends BaseDAO<Residuo>{
         return listaR;
     }
 
+    /**
+     * 
+     * @return regresa una colleccion de residuos
+     */
     @Override
     public MongoCollection<Residuo> getCollection() {
          MongoDatabase db= Conexion.getInstance();

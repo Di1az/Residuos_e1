@@ -16,9 +16,13 @@ import org.bson.codecs.pojo.PojoCodecProvider;
  * @author oscar
  */
 public class Conexion {
+    //Atributo de la instancia MongoDatabase
       private static MongoDatabase instancia;
 
-
+    /**
+     * Método que realiza la conexión con la base de datos MondoDB.
+     * @return regresa el atributo de la clase
+     */
     public static MongoDatabase getInstance() {
         if (instancia == null) {
             CodecRegistry co = fromRegistries(

@@ -16,13 +16,21 @@ import java.util.ArrayList;
  * @author oscar
  */
 public class empresaDAO extends BaseDAO<Empresa_transportista>{
-
+    
+    /**
+     * 
+     * @param entidad parámetro entidad
+     */
     @Override
     public void guardar(Empresa_transportista entidad) {
        MongoCollection<Empresa_transportista> empresa= this.getCollection();
        empresa.insertOne(entidad);
     }
 
+    /**
+     * 
+     * @return regresa una lista de empresas
+     */
     @Override
     public ArrayList<Empresa_transportista> buscarTodos() {
         MongoCollection<Empresa_transportista> coleccionE = this.getCollection();
@@ -34,6 +42,10 @@ public class empresaDAO extends BaseDAO<Empresa_transportista>{
         return listaE;
     }
 
+    /**
+     * 
+     * @return regresa una empresaa
+     */
     @Override
     public MongoCollection<Empresa_transportista> getCollection() {
          MongoDatabase db= Conexion.getInstance();
@@ -41,6 +53,10 @@ public class empresaDAO extends BaseDAO<Empresa_transportista>{
         return empresa;
     }
     
+    /**
+     * 
+     * @return regresa una lista de empresas transportistas
+     */
     public ArrayList<Empresa_transportista> buscarTipoTraslado() {
         MongoCollection<Empresa_transportista> coleccionE = this.getCollection();
         MongoCursor<Empresa_transportista> coleccionEm = coleccionE.find().iterator();
@@ -51,6 +67,10 @@ public class empresaDAO extends BaseDAO<Empresa_transportista>{
         return listaE;
     }
     
+    /**
+     * 
+     * @return regresa una lista de empresas transportistas
+     */
     public ArrayList<Empresa_transportista> buscarCostoKm() {
         MongoCollection<Empresa_transportista> coleccionE = this.getCollection();
         MongoCursor<Empresa_transportista> coleccionEm = coleccionE.find().iterator();

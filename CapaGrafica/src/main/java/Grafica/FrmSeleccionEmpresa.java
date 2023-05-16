@@ -23,14 +23,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     
+    //Atributo JButton
     JButtonTableCellRenderer buttonRenderer = new JButtonTableCellRenderer();
+    //Atributo boton de seleccion
     JButton btn = new JButton("Seleccion");
+    //Atributo Empresa Transportista
     List<Empresa_transportista> resultados = new ArrayList<>();
+    //Atributo Inferfaz log
     ILogica log;
     
 
     /**
-     * Creates new form FrmSeleccionEmpresa
+     * Método constructor
      */
     public FrmSeleccionEmpresa() {
         initComponents();
@@ -134,6 +138,11 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Método de la tabla de resultados, que una vez que clickee con el mouse 
+     * se realize una acción, se llama al botón.
+     * @param evt parámetro evento
+     */
     private void tblResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResultadosMouseClicked
         // TODO add your handling code here:
         int columna;
@@ -163,39 +172,40 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmSeleccionEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmSeleccionEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmSeleccionEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmSeleccionEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(FrmSeleccionEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(FrmSeleccionEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(FrmSeleccionEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(FrmSeleccionEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        </editor-fold>
+//        </editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new FrmSeleccionEmpresa().setVisible(true);
+//            }
+//        });
+//    }
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmSeleccionEmpresa().setVisible(true);
-            }
-        });
-    }
-
+    //Variables de la clase innamovibles 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel blFondo;
     private javax.swing.JComboBox<String> cmbSeleccion;

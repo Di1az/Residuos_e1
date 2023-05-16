@@ -26,14 +26,20 @@ import org.bson.types.ObjectId;
  */
 public class ProductorDAO extends BaseDAO<Productor>{
     
-    
+    /**
+     * 
+     * @param entidad parámetro entidad
+     */
     @Override
     public void guardar(Productor entidad) {
        MongoCollection<Productor> productor= this.getCollection();
        productor.insertOne(entidad);
     }
 
-
+    /**
+     * 
+     * @return regresa una lista de productores
+     */
     @Override
     public ArrayList<Productor> buscarTodos() {
         MongoCollection<Productor> coleccionP = this.getCollection();
@@ -44,7 +50,11 @@ public class ProductorDAO extends BaseDAO<Productor>{
         }
         return listaP;
     }
-
+    
+    /**
+     * 
+     * @return regresa una coleccion de productores
+     */
    @Override
     public MongoCollection<Productor> getCollection() {
         MongoDatabase db= Conexion.getInstance();
@@ -52,6 +62,12 @@ public class ProductorDAO extends BaseDAO<Productor>{
         return colleccionProductor;
     }
     
+    /**
+     * 
+     * @param nombre parámetro nombre
+     * @param numero parámetro  número
+     * @return regresa un booleano verdadero o falso
+     */
     public boolean buscarPorNombreID(String nombre, int numero) {
     Productor productor = getCollection()
         .find(and(eq("nombreEncargado", nombre), eq("numeroIdentificador", numero)))
