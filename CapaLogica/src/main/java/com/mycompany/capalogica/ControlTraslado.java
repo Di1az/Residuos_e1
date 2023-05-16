@@ -35,4 +35,7 @@ public class ControlTraslado {
         datos = new FachadaDatos();
         return datos.listaTraslado();
     }
+    
+    
+    
 }
