@@ -4,6 +4,7 @@
  */
 package com.mycompany.capalogica;
 
+import Dominio.Empresa_transportista;
 import Dominio.Productor;
 import Dominio.Residuo;
 import Dominio.Traslado;
@@ -18,10 +19,8 @@ public interface ILogica {
     public void guardarTraslado(Traslado traslado);
     public void registrarInformacion();
     public void guardarProductor(Productor productor);
-    public Productor buscarPorID(Object id);
-    public MongoCollection<Productor> obtenerColeccion();
-    public Productor buscarPorNum(Object numeroIdentificador);
-    public Productor buscarPorNombre(Object nombreEncargado);
+    public boolean verificarProductor(String nombre, int numero);
+    public List<Empresa_transportista> buscarTodos();
     
     
 }

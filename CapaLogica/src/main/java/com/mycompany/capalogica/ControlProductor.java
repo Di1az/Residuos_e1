@@ -27,4 +27,9 @@ public class ControlProductor {
         return datos.listaProductor();
         
     }
+    
+    public boolean verificarProductor(String nombre, int numero){
+        datos = new FachadaDatos();
+       return datos.verificarProductorNombreId(nombre, numero);
+    }
 }

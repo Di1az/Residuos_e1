@@ -32,10 +32,9 @@ public interface IDatos {
     public void guardarTraslado(Traslado traslado);
     public List<Traslado> listaTraslado();
     
-    public Productor buscarPorID(Object id);
+    public boolean verificarProductorNombreId(String nombre, int numero);
     
-    public MongoCollection<Productor> obtenerColeccion();
-      
+    
     
     
 }

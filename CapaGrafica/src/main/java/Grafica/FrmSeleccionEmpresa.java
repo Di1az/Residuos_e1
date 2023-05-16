@@ -6,6 +6,8 @@ package Grafica;
 
 import Dominio.Empresa_transportista;
 import Persistencia.empresaDAO;
+import com.mycompany.capalogica.FachadaLogica;
+import com.mycompany.capalogica.ILogica;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,6 +26,8 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     JButtonTableCellRenderer buttonRenderer = new JButtonTableCellRenderer();
     JButton btn = new JButton("Seleccion");
     List<Empresa_transportista> resultados = new ArrayList<>();
+    ILogica log;
+    
 
     /**
      * Creates new form FrmSeleccionEmpresa
@@ -31,6 +35,10 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     public FrmSeleccionEmpresa() {
         initComponents();
         tblResultados.setDefaultRenderer(Object.class, buttonRenderer);
+        log=new FachadaLogica();
+        //log.registrarInformacion();
+        buscarEmpresas();
+        
     }
     
     /**
@@ -38,8 +46,8 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
      */
     private void buscarEmpresas() {
         String busqueda = txtBusqueda.getText();
-        empresaDAO empresaDAO = new empresaDAO();
-        resultados = empresaDAO.buscarTodos();
+        
+        resultados = log.buscarTodos();
 
         //resultados = empresaDAO.desencriptarPersonaLista(resultados);
         // Realizar la consulta utilizando CriteriaBuilder según la opción seleccionada en cmbSeleccion

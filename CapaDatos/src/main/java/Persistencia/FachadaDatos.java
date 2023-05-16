@@ -82,17 +82,13 @@ public class FachadaDatos implements IDatos {
     }
     
     @Override
-    public MongoCollection<Productor> obtenerColeccion() {
-        MongoDatabase db = Conexion.getInstance();
-        MongoCollection<Productor> coleccionContinentes = db.getCollection("Productor", Productor.class);
-        return coleccionContinentes;
+    public boolean verificarProductorNombreId(String nombre, int numero) {
+        ProductorDAO pdao= new ProductorDAO();
+        return pdao.buscarPorNombreID(nombre, numero);
     }
+
     
-    @Override
-    public Productor buscarPorID(Object id) {
-        Productor productor = obtenerColeccion().find(eq("_id", id)).first();
-        return productor;
-    }
+    
 
     
     

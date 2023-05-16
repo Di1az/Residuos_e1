@@ -13,6 +13,7 @@ import Persistencia.Conexion;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
+import java.util.List;
 
 /**
  *
@@ -54,32 +55,17 @@ public class FachadaLogica implements ILogica{
         Residuo residuo1= new Residuo(1111, "Plomo", "Metal pesado", productor);
         mr.guardarResiduo(residuo1);
     }
-    
-    @Override
-    public MongoCollection<Productor> obtenerColeccion() {
-        MongoDatabase db = Conexion.getInstance();
-        MongoCollection<Productor> coleccionContinentes = db.getCollection("Productor", Productor.class);
-        return coleccionContinentes;
-    }
-    
-    @Override
-    public Productor buscarPorID(Object id) {
-        Productor productor = obtenerColeccion().find(eq("_id", id)).first();
-        return productor;
-    }
 
     @Override
-    public Productor buscarPorNum(Object numeroIdentificador ) {
-        Productor productor = obtenerColeccion().find(eq("numeroIdentificador", numeroIdentificador)).first();
-        return productor;
+    public boolean verificarProductor(String nombre, int numero) {
+        ControlProductor conp = new ControlProductor();
+        return conp.verificarProductor(nombre, numero);
     }
-
-    @Override
-    public Productor buscarPorNombre(Object nombreEncargado) {
-        Productor productor = obtenerColeccion().find(eq("nombreEncargado", nombreEncargado)).first();
-        return productor;
+    
+    public List<Empresa_transportista> buscarTodos(){
+         ControlEmpresa cone = new ControlEmpresa();
+         return cone.buscarTodos();
     }
-
     
-    
+  
 }
