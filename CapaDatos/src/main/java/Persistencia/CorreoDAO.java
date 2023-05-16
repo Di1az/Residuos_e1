@@ -5,7 +5,7 @@
  */
 package Persistencia;
 
-import com.sun.istack.internal.logging.Logger;
+//import com.sun.istack.internal.logging.Logger;
 import java.util.Properties;
 import java.util.logging.Level;
 import javax.mail.Message;

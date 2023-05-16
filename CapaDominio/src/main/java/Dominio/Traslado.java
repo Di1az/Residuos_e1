@@ -20,11 +20,7 @@ public class Traslado {
     //Atributo residuo
     private Residuo residuo;
     //Atributo coste
-    private int coste;
-    //Atributo numeroVehiculo
-    private int numeroVehiculo;
-    //Atributo producto
-    private Producto producto;
+    private float coste;
     //Atributo cantidad resudios
     private int cantidad_residuos;
     //Atributo fecha_estimada
@@ -47,20 +43,16 @@ public class Traslado {
      * @param codigoVehiculo parámetro codigo vehiculo
      * @param residuo parámetro residuo
      * @param coste  parámetro coste
-     * @param numeroVehiculo parámetro numeroVehiculo
-     * @param producto parámetro producto
      * @param cantidad_residuos parámetro cantidad residuos
      * @param fecha_estimada parámetro fecha estimada
      * @param lote parámetro lote
      * @param kilometros parámetro kilometros
      */
-    public Traslado(ObjectId id, String codigoVehiculo, Residuo residuo, int coste, int numeroVehiculo, Producto producto, int cantidad_residuos, Date fecha_estimada, int lote, float kilometros) {
+    public Traslado(ObjectId id, String codigoVehiculo, Residuo residuo, float coste, int cantidad_residuos, Date fecha_estimada, int lote, float kilometros) {
         this.id = id;
         this.codigoVehiculo = codigoVehiculo;
         this.residuo = residuo;
         this.coste = coste;
-        this.numeroVehiculo = numeroVehiculo;
-        this.producto = producto;
         this.cantidad_residuos = cantidad_residuos;
         this.fecha_estimada = fecha_estimada;
         this.lote = lote;
@@ -119,7 +111,7 @@ public class Traslado {
      * Método que obtiene coste.
      * @return regresa el coste
      */
-    public int getCoste() {
+    public float getCoste() {
         return coste;
     }
 
@@ -127,40 +119,8 @@ public class Traslado {
      * Método que ingresa el coste.
      * @param coste parámetro coste
      */
-    public void setCoste(int coste) {
+    public void setCoste(float coste) {
         this.coste = coste;
-    }
-
-    /**
-     * Método que obtiene el número de vehiculos.
-     * @return regresa numero de vehiculos
-     */
-    public int getNumeroVehiculo() {
-        return numeroVehiculo;
-    }
-
-    /**
-     * Método que ingresa el número de vehiculos.
-     * @param numeroVehiculo parámetro numero de vehiculo
-     */
-    public void setNumeroVehiculo(int numeroVehiculo) {
-        this.numeroVehiculo = numeroVehiculo;
-    }
-
-    /**
-     * Métoso que obtiene el producto.
-     * @return regresa producto
-     */
-    public Producto getProducto() {
-        return producto;
-    }
-
-    /**
-     * Método que ingresa el producto.
-     * @param producto parámetro producto.
-     */
-    public void setProducto(Producto producto) {
-        this.producto = producto;
     }
 
     /**

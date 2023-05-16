@@ -40,7 +40,7 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
         initComponents();
         tblResultados.setDefaultRenderer(Object.class, buttonRenderer);
         log=new FachadaLogica();
-        //log.registrarInformacion();
+        log.registrarInformacion();
         buscarEmpresas();
         
     }
