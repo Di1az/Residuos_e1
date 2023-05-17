@@ -69,7 +69,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         
         return t;
     }
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
     
     public String getTextoCorreo(Traslado t){
         String traslado = "";
@@ -91,8 +91,8 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
 //        empresa
 //        
 //    }
-=======
->>>>>>> Stashed changes
+//=======
+//>>>>>>> Stashed changes
 
     /**
      * This method is called from within the constructor to initialize the form.
