@@ -93,15 +93,15 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
 
         lblNombreEmpresa.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblNombreEmpresa.setText("Nombre Empresa");
-        jPanel2.add(lblNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 63, -1, -1));
+        jPanel2.add(lblNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         lblNombreProductor.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblNombreProductor.setText("Nombre Productor");
-        jPanel2.add(lblNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        jPanel2.add(lblNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         lblNumeroIdentificador.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblNumeroIdentificador.setText("Número Identificador");
-        jPanel2.add(lblNumeroIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        jPanel2.add(lblNumeroIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         txtNombreEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +113,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
                 txtNombreEmpresaKeyTyped(evt);
             }
         });
-        jPanel2.add(txtNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 250, 30));
+        jPanel2.add(txtNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 250, 50));
 
         txtNombreProductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,10 +125,11 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
                 txtNombreProductorKeyTyped(evt);
             }
         });
-        jPanel2.add(txtNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 250, 30));
+        jPanel2.add(txtNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 250, 50));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("aqui va");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 230, 30));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 240, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 640, 370));
 
@@ -143,10 +144,10 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
                 btnAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, -1, -1));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 170, 60));
 
         btnCancelar.setText("Cancelar");
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, -1, -1));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 500, 160, 50));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registroProducto 1.png"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));

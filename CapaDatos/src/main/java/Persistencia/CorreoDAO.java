@@ -21,17 +21,24 @@ import javax.swing.JOptionPane;
  * @author koine
  */
 public class CorreoDAO {
-    private final Properties properties = new Properties();
+    private Properties properties;
 	
 	private static String password = "qhmwutzmyjdcjfra";
         private static String emailForm = "traslados.productos@gmail.com";
  
 	private Session session;
+        private MimeMessage message;
+
+    public CorreoDAO() {
+        properties = new Properties();
+    }
+        
+        
         
 	private void init() {
             
-		properties.put("mail.smtp.host", "mail.gmail.com");
-                properties.put("mail.smtp.ssl.host.trust", "smtp.gmail.com");
+		properties.put("mail.smtp.host", "smtp.gmail.com");
+                properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 		properties.setProperty("mail.smtp.starttls.enable", "true");
 		properties.setProperty("mail.smtp.port","587");
                 properties.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
@@ -43,11 +50,21 @@ public class CorreoDAO {
 		session = Session.getDefaultInstance(properties);
                 
         }
+        
+//        private void crearEmail(){
+//            properties.put("mail.smtp.host", "smtp.gmail.com");
+//            properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+//            properties.setProperty("mail.smtp.starttls.enable", "true");
+//            properties.setProperty("mail.smtp.port","587");
+//            properties.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
+//            properties.setProperty("mail.smtp.auth", "true");
+//            properties.setProperty("mail.smtp.user", emailForm);
+//        }
  
 	public void sendEmail(String receptor, String traslado){
 		init();
 		try{
-			MimeMessage message = new MimeMessage(session);
+			message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailForm));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(receptor));
 			message.setSubject("Traslado -  petición");
@@ -55,7 +72,7 @@ public class CorreoDAO {
                         
                         //Envio
 			Transport t = session.getTransport("smtp");
-			t.connect(emailForm, CorreoDAO.password);
+			t.connect(emailForm, password);
 			t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
 			t.close();
                         
@@ -63,6 +80,7 @@ public class CorreoDAO {
 		}catch (MessagingException me){
                         //Error en la conexion al servidor de correos
 //                        Logger.getLogger(CorreoDAO.class).log(Level.SEVERE,null,me);
+                        JOptionPane.showMessageDialog(null,"ERROR: el correo no pudo ser enviado!");
 			return;
 		}
 		

@@ -9,6 +9,7 @@ import Dominio.Productor;
 import Dominio.Residuo;
 import Dominio.Traslado;
 import Persistencia.empresaDAO;
+import com.mycompany.capalogica.ControlCorreo;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
 import java.util.Date;
@@ -24,7 +25,9 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     
     ILogica log;
     empresaDAO empresaDAO = new empresaDAO();
+    ControlCorreo control = new ControlCorreo();
     float costoTotal = 0;
+    Empresa_transportista empresa;
     /**
      * Creates new form FrmIngresarDatos
      * @param empresa
@@ -33,10 +36,10 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         initComponents();
         log = new FachadaLogica();
         costoTotal = empresa.getCostoKM();
-        
+        this.empresa = empresa;
     }
     
-    public void solicitudTraslado(){
+    public Traslado solicitudTraslado(){
         Traslado t = new Traslado();
         // Supongamos que tienes un JComboBox llamado cmbProducto que contiene objetos de tipo Producto
         JComboBox<Residuo> cmbProducto = new JComboBox<>();
@@ -61,9 +64,27 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         // Establece la nueva fecha estimada
         t.setFecha_estimada(fechaSeleccionada.getTime());
         costoTotal = costoTotal*Integer.valueOf(txtKilometros.getText());
-        t.setCoste(costoTotal);
+        t.setCoste((int) costoTotal);
         log.guardarTraslado(t);
+        
+        return t;
     }
+    
+    public String getTextoCorreo(Traslado t){
+        String traslado = "";
+        
+//         String nombreP = t.getResiduo().getProductor().getNombreEmpresa();
+//         String nombreR = t.getResiduo().getDescripcion();
+         String direccion = this.txtDireccion1.getText();
+         String km = this.txtKilometros.getText();
+         String fechaEs = t.getFecha_estimada().toString();
+         String cantidadR = this.txtCantidad.getText();
+                 
+         traslado = control.correoTexto(direccion, empresa.getNombre(), km ,"PapeleriaJose", "cloro", cantidadR,fechaEs ,empresa.getTipo_traslado());
+        
+        return traslado;
+    }
+    
     
 //    public void calcularCosto(){
 //        empresa
@@ -181,7 +202,10 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-         this.solicitudTraslado();
+         Traslado t = this.solicitudTraslado();
+         String traslado = getTextoCorreo(t);
+         
+         control.correoEnvio("carmen.hernandez240210@potros.itson.edu.mx", traslado);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
