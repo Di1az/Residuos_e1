@@ -23,7 +23,7 @@ import org.bson.types.ObjectId;
 public class ResiduosDAO extends BaseDAO<Residuo>{
 
     /**
-     * 
+     * Método guardar residuo.
      * @param entidad parámetro entidad
      */
     @Override
@@ -34,7 +34,7 @@ public class ResiduosDAO extends BaseDAO<Residuo>{
 
    
     /**
-     * 
+     * Método que busca todos los residuos de la colección.
      * @return regresa una lista de residuos.
      */
     @Override
@@ -49,7 +49,7 @@ public class ResiduosDAO extends BaseDAO<Residuo>{
     }
 
     /**
-     * 
+     * Método que crea la colección y conecta la misma con la base de datos.
      * @return regresa una colleccion de residuos
      */
     @Override

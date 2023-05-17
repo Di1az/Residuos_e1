@@ -5,8 +5,10 @@
 package Grafica;
 
 import Dominio.Productor;
+import Persistencia.ProductorDAO;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,8 +27,23 @@ public class FrmLoginProductores extends javax.swing.JFrame {
     
     public void ingresarProductor() {
         if (log.verificarProductor(txtNombreProductor.getText(), Integer.parseInt(txtNumIdentificador.getText()))) {
+            
+//                PersonaDAO personaDAO = new PersonaDAO();
+//                //PONER TXT.GETTEXT DENTRO DE DONDE ESTAN LAS COMILLAS AHORITA LISTO
+//
+//                List<Persona> persona = personaDAO.buscarRfc(lblRfc.getText());
+//
+//                
+//                    JOptionPane.showMessageDialog(this, "Se encontro el rfc");
+//                    this.setVisible(false);
+//                    FrHistorialLicencia historial = new FrHistorialLicencia(persona.get(0));
+//                    historial.setVisible(true);
+//                    this.dispose();
+            ProductorDAO productorDAO = new ProductorDAO();
+            List<Productor> productores = productorDAO.buscarNumeroEmpresa(Integer.parseInt(txtNumIdentificador.getText()));
+            
             this.setVisible(false);
-            FrmMenuPrincipal menu = new FrmMenuPrincipal();
+            FrmMenuPrincipal menu = new FrmMenuPrincipal(productores.get(0));
             menu.setVisible(true);
             this.dispose();
         } else {

@@ -22,7 +22,6 @@ import javax.swing.JComboBox;
  */
 public class FrmIngresarDatos extends javax.swing.JFrame {
     
-    
     ILogica log;
     empresaDAO empresaDAO = new empresaDAO();
     ControlCorreo control = new ControlCorreo();
@@ -31,12 +30,14 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     /**
      * Creates new form FrmIngresarDatos
      * @param empresa
+     * @param producto
      */
-    public FrmIngresarDatos(Empresa_transportista empresa) {
+    public FrmIngresarDatos(Empresa_transportista empresa, Productor producto) {
         initComponents();
         log = new FachadaLogica();
         costoTotal = empresa.getCostoKM();
         this.empresa = empresa;
+        lblNombreEmpresaProductor.setText(producto.getNombreEmpresa());
     }
     
     public Traslado solicitudTraslado(){
@@ -81,7 +82,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
          String fechaEs = t.getFecha_estimada().toString();
          String cantidadR = this.txtCantidad.getText();
                  
-         traslado = control.correoTexto(direccion, empresa.getNombre(), km ,"PapeleriaJose", "cloro", cantidadR,fechaEs ,empresa.getTipo_traslado());
+         traslado = control.correoTexto(direccion, empresa.getNombre(), km ,lblNombreEmpresaProductor.getText(), cmbProducto.getSelectedItem().toString(), cantidadR,fechaEs ,empresa.getTipo_traslado());
         
         return traslado;
     }
@@ -120,6 +121,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         txtFechaNa = new com.toedter.calendar.JDateChooser();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        lblNombreEmpresaProductor = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -185,6 +187,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 540, -1, -1));
+        jPanel1.add(lblNombreEmpresaProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 110, 90, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame 3.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -208,7 +211,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
          Traslado t = this.solicitudTraslado();
          String traslado = getTextoCorreo(t);
          
-         control.correoEnvio("carmen.hernandez240210@potros.itson.edu.mx", traslado);
+         control.correoEnvio(empresa.getEmail(), traslado);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -265,6 +268,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblNombreEmpresaProductor;
     private javax.swing.JLabel lblSolicitud;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtDireccion1;

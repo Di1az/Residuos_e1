@@ -21,6 +21,8 @@ public class Empresa_transportista {
     private String tipo_traslado;
     //Atributo costoKM de la clase
     private float costoKM;
+    //Atributo email de la clase
+    private String email;
 
     /**
      * Método constructor vacío de la clase.
@@ -34,12 +36,14 @@ public class Empresa_transportista {
      * @param nombre parámetro nombre
      * @param tipo_traslado parámetro tipo_traslado
      * @param costoKM parámetro costoKM
+     * @param email parámetro email
      */
-    public Empresa_transportista(ObjectId id, String nombre, String tipo_traslado, float costoKM) {
+    public Empresa_transportista(ObjectId id, String nombre, String tipo_traslado, float costoKM, String email) {
         this.id = id;
         this.nombre = nombre;
         this.tipo_traslado = tipo_traslado;
         this.costoKM = costoKM;
+        this.email = email;
     }
 
     /**
@@ -47,11 +51,13 @@ public class Empresa_transportista {
      * @param nombre parámetro nombre
      * @param tipo_traslado parámetro tipo_traslado
      * @param costoKM parámetro costoKM
+     * @param email parámetro email
      */
-    public Empresa_transportista(String nombre, String tipo_traslado, float costoKM) {
+    public Empresa_transportista(String nombre, String tipo_traslado, float costoKM, String email) {
         this.nombre = nombre;
         this.tipo_traslado = tipo_traslado;
         this.costoKM = costoKM;
+        this.email = email;
     }
 
     /**
@@ -118,4 +124,19 @@ public class Empresa_transportista {
         this.costoKM = costoKM;
     }
 
+    /**
+     * Método que obtiene el email.
+     * @return regresa email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Método que ingresa el email.
+     * @param email parámetro email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

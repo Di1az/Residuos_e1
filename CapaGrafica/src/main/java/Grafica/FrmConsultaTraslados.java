@@ -4,19 +4,51 @@
  */
 package Grafica;
 
+import Dominio.Empresa_transportista;
+import Dominio.Traslado;
+import com.mycompany.capalogica.ILogica;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hoshi
  */
 public class FrmConsultaTraslados extends javax.swing.JFrame {
-
+    
+    //Atributo Empresa Transportista
+    List<Traslado> resultados = new ArrayList<>();
+    //Atributo Inferfaz log
+    ILogica log;
     /**
      * Creates new form FrmConsultaTraslados
      */
     public FrmConsultaTraslados() {
         initComponents();
+        buscarTraslados();
     }
 
+     private void buscarTraslados() {
+        
+        resultados = log.buscarTodosT();
+
+        //resultados = empresaDAO.desencriptarPersonaLista(resultados);
+        // Realizar la consulta utilizando CriteriaBuilder según la opción seleccionada en cmbSeleccion
+        
+        
+        DefaultTableModel model = (DefaultTableModel) tblResultados.getModel();
+        model.setRowCount(0);
+        if (resultados != null) {
+            for (Traslado t : resultados) {
+
+                //String n = t.getNombre();
+                model.addRow(new Object[]{ t.getCantidad_residuos(),t.getCoste(), t.getFecha_estimada(), t.getLote()});
+
+            }
+
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,7 +60,7 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblResultados = new javax.swing.JTable();
         lblSolicitud = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -36,18 +68,15 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "", "Title 2", "Title 3", "Title 4"
+                "Cantidad Residuos", "Coste", "Fecha Estimada", "Lote"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblResultados);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 840, 460));
 
@@ -113,7 +142,7 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblSolicitud;
+    private javax.swing.JTable tblResultados;
     // End of variables declaration//GEN-END:variables
 }

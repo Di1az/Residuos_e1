@@ -5,6 +5,9 @@
 package Grafica;
 
 import Dominio.Empresa_transportista;
+import Dominio.Producto;
+import Dominio.Productor;
+import Persistencia.ProductorDAO;
 import Persistencia.empresaDAO;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
@@ -31,18 +34,19 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     List<Empresa_transportista> resultados = new ArrayList<>();
     //Atributo Inferfaz log
     ILogica log;
+    //
     
 
     /**
      * Método constructor
      */
-    public FrmSeleccionEmpresa() {
+    public FrmSeleccionEmpresa(Productor productor) {
         initComponents();
         tblResultados.setDefaultRenderer(Object.class, buttonRenderer);
         log=new FachadaLogica();
+        lblPopo.setText(productor.getNombreEmpresa());
         //log.registrarInformacion();
         buscarEmpresas();
-        
     }
     
     /**
@@ -87,9 +91,9 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
         cmbSeleccion = new javax.swing.JComboBox<>();
         txtBusqueda = new javax.swing.JTextField();
         blFondo = new javax.swing.JLabel();
+        lblPopo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
         setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,6 +126,9 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
 
         blFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pantallaTabla 3.png"))); // NOI18N
         jPanel1.add(blFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        lblPopo.setText("jLabel1");
+        jPanel1.add(lblPopo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,8 +165,11 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
                 ((JButton) objeto).doClick();
                 JButton boton = (JButton) objeto;
                 if (boton.equals(btn)) {
+                    ProductorDAO productorDAO = new ProductorDAO();
+                    List<Productor> productores = productorDAO.buscarNombreEmpresa(lblPopo.getText());
+        
                     this.setVisible(false);
-                    FrmIngresarDatos ingresar = new FrmIngresarDatos(resultados.get(row));
+                    FrmIngresarDatos ingresar = new FrmIngresarDatos(resultados.get(row), productores.get(0));
                     ingresar.setVisible(true);
                     this.dispose();
 
@@ -211,6 +221,7 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbSeleccion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblPopo;
     private javax.swing.JLabel lblSolicitud;
     private javax.swing.JTable tblResultados;
     private javax.swing.JTextField txtBusqueda;

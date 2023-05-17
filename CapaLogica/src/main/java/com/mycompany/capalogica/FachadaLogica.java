@@ -53,15 +53,15 @@ public class FachadaLogica implements ILogica{
         ControlEmpresa me= new ControlEmpresa();
         ControlProducto mp= new ControlProducto();
         ControlResiduos mr=new ControlResiduos();
-        Empresa_transportista empresa1= new Empresa_transportista("AMEX BUSINESS CLASS", "Por partes", 35.90f);
+        Empresa_transportista empresa1= new Empresa_transportista("AMEX BUSINESS CLASS", "Por partes", 35.90f,"carmen.hernandez240210@potros.itson.edu.mx");
         me.guardarEmpresa(empresa1);
-        Empresa_transportista empresa2= new Empresa_transportista("L'ORÉAL", "Total", 37.30f);
+        Empresa_transportista empresa2= new Empresa_transportista("L'ORÉAL", "Total", 37.30f,"oscar.valenzuela233089@potros.itson.edu.mx");
         me.guardarEmpresa(empresa2);
-        Empresa_transportista empresa3= new Empresa_transportista("Lujo Descalzo", "Por partes", 33.20f);
+        Empresa_transportista empresa3= new Empresa_transportista("Lujo Descalzo", "Por partes", 33.20f,"daniel.almada233121@potros.itson.edu.mx");
         me.guardarEmpresa(empresa3);
-        Empresa_transportista empresa4= new Empresa_transportista("Microsoft", "Total", 40.70f);
+        Empresa_transportista empresa4= new Empresa_transportista("Microsoft", "Total", 40.70f,"michell.cedano233230@potros.itson.edu.mx");
         me.guardarEmpresa(empresa4);
-        Empresa_transportista empresa5= new Empresa_transportista("UKG", "Total", 29.45f);
+        Empresa_transportista empresa5= new Empresa_transportista("UKG", "Total", 29.45f,"adrian.macias@itson.edu.mx");
         me.guardarEmpresa(empresa5);
         
         Productor productor=new Productor("Unilever", "Oscar Valenzuela", 100503);
@@ -91,6 +91,12 @@ public class FachadaLogica implements ILogica{
     public List<Empresa_transportista> buscarTodos(){
          ControlEmpresa cone = new ControlEmpresa();
          return cone.buscarTodos();
+    }
+
+    @Override
+    public List<Traslado> buscarTodosT() {
+       ControlTraslado tras = new ControlTraslado();
+       return tras.buscarTodos();
     }
     
   

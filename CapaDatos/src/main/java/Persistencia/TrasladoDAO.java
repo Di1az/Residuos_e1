@@ -4,11 +4,14 @@
  */
 package Persistencia;
 
+import Dominio.Productor;
 import Dominio.Traslado;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.eq;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -52,4 +55,11 @@ public class TrasladoDAO extends BaseDAO<Traslado>{
         return colleccionResiduos;
     }
     
+//    public List<Traslado> listaTraslados(int numero){
+//        Productor productor = getCollection()
+//                .find(eq("numeroIdentificador", numero)).iterator();
+//        
+//        return productor!=null;
+//    }
+//    
 }

@@ -26,6 +26,7 @@ public interface ILogica {
     public boolean verificarProductor(String nombre, int numero);
     //Método de lista transportista que busca todos
     public List<Empresa_transportista> buscarTodos();
-    
+    //Método de lista traslado que busca todos
+    public List<Traslado> buscarTodosT();
     
 }

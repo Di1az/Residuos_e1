@@ -15,6 +15,7 @@ import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import exceptions.DAOException;
 import java.util.ArrayList;
+import java.util.List;
 import org.bson.types.ObjectId;
 
 
@@ -74,6 +75,42 @@ public class ProductorDAO extends BaseDAO<Productor>{
         .first();
     return productor!=null;
 }
+    /**
+     * Método que busca un productor por su número identificador que es el id.
+     * @param numero parámetro numero
+     * @return regresa una lista de productores
+     */
+    public List<Productor> buscarNumeroEmpresa(int numero) {
+        List<Productor> productores = new ArrayList<>();
 
+        MongoCursor<Productor> cursor = getCollection()
+                .find(eq("numeroIdentificador", numero)).iterator();
+
+        while (cursor.hasNext()) {
+            Productor productor = cursor.next();
+            productores.add(productor);
+        }
+
+        return productores;
+    }
     
+    /**
+     * Método que busca un productor por el nombre de su empresa.
+     * @param nombre parámetro nombre
+     * @return regresa una lista de productores
+     */
+    public List<Productor> buscarNombreEmpresa(String nombre) {
+        List<Productor> productores = new ArrayList<>();
+
+        MongoCursor<Productor> cursor = getCollection()
+                .find(eq("nombreEmpresa", nombre)).iterator();
+
+        while (cursor.hasNext()) {
+            Productor productor = cursor.next();
+            productores.add(productor);
+        }
+
+        return productores;
+    }
+
 }
