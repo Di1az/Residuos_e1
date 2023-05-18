@@ -5,6 +5,7 @@
 package Grafica;
 
 import Dominio.Productor;
+import Dominio.Residuo;
 import Persistencia.ProductorDAO;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
@@ -47,8 +48,13 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
         System.out.println(txtNombreProductor.getText());
         p.setNombreEncargado(txtNombreProductor.getText());
         p.setNumeroIdentificador(numIdentificador);
+        Residuo residuo = new Residuo();
+        residuo.setCodigo(234);
+        residuo.setDescripcion("Muy peligroso, altamente radioactivo");
+        residuo.setTipo("Plomo");
+        p.addResiduos(residuo);
         log.guardarProductor(p);
-
+        
     }
 
     /**
@@ -224,7 +230,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
      * @param evt parámetro evento
      */
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-
+        
        if (validarVacios()){
            this.registrarProductor();
 

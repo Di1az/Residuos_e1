@@ -57,11 +57,4 @@ public class TrasladoDAO extends BaseDAO<Traslado>{
         return colleccionResiduos;
     }
     
-//    public List<Traslado> listaTraslados(int numero){
-//        Productor productor = getCollection()
-//                .find(eq("numeroIdentificador", numero)).iterator();
-//        
-//        return productor!=null;
-//    }
-//    
 }

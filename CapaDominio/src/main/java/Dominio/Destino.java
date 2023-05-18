@@ -107,4 +107,14 @@ public class Destino {
     public void setTratamiento(String tratamiento) {
         this.tratamiento = tratamiento;
     }
+
+    /**
+     * Método toString que nos da el destino como un texto
+     * @return regresa destino
+     */
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
 }

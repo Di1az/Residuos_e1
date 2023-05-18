@@ -148,7 +148,7 @@ public class FachadaDatos implements IDatos {
      * @return regresa un booleano verdadero o falso
      */
     @Override
-    public boolean verificarProductorNombreId(String nombre, int numero) {
+    public Productor verificarProductorNombreId(String nombre, int numero) {
         ProductorDAO pdao= new ProductorDAO();
         return pdao.buscarPorNombreID(nombre, numero);
     }

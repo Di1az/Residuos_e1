@@ -14,12 +14,15 @@ import java.util.List;
  */
 public class FrmMenuPrincipal extends javax.swing.JFrame {
 
+    //Atributo productor
+    private Productor productorIniciado;
     /**
      * Creates new form FrmMenuPrincipal
      * @param productor parámetro productor
      */
     public FrmMenuPrincipal(Productor productor) {
         initComponents();
+        this.productorIniciado = productor;
         lblNombreEmpresa.setText(productor.getNombreEmpresa());
     }
 
@@ -109,11 +112,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      */
     private void btnSolicitudEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudEmpresasActionPerformed
         // TODO add your handling code here:
-        ProductorDAO productorDAO = new ProductorDAO();
-        List<Productor> productores = productorDAO.buscarNombreEmpresa(lblNombreEmpresa.getText());
         
         this.setVisible(false);
-        FrmSeleccionEmpresa seleccion= new FrmSeleccionEmpresa(productores.get(0));
+        FrmSeleccionEmpresa seleccion= new FrmSeleccionEmpresa(productorIniciado);
         seleccion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSolicitudEmpresasActionPerformed
@@ -124,11 +125,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      */
     private void btnRegistrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProductosActionPerformed
         // TODO add your handling code here:
-        ProductorDAO productorDAO = new ProductorDAO();
-        List<Productor> productores = productorDAO.buscarNombreEmpresa(lblNombreEmpresa.getText());
         
         this.setVisible(false);
-        FrmRegistrarProductos registroProductos= new FrmRegistrarProductos(productores.get(0));
+        FrmRegistrarProductos registroProductos= new FrmRegistrarProductos(productorIniciado);
         registroProductos.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegistrarProductosActionPerformed
@@ -140,11 +139,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void btnConsultaTrasladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaTrasladosActionPerformed
         // TODO add your handling code here:
         
-        ProductorDAO productorDAO = new ProductorDAO();
-        List<Productor> productores = productorDAO.buscarNombreEmpresa(lblNombreEmpresa.getText());
-        
         this.setVisible(false);
-        FrmConsultaTraslados traslados= new FrmConsultaTraslados(productores.get(0));
+        FrmConsultaTraslados traslados= new FrmConsultaTraslados(productorIniciado);
         traslados.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnConsultaTrasladosActionPerformed

@@ -44,7 +44,7 @@ public class ControlProductor {
      * @param numero parámetro número
      * @return regresa un booleano verdadero o falso
      */
-    public boolean verificarProductor(String nombre, int numero){
+    public Productor verificarProductor(String nombre, int numero){
         datos = new FachadaDatos();
        return datos.verificarProductorNombreId(nombre, numero);
     }

@@ -21,8 +21,6 @@ public class Residuo {
     private String tipo;
     //Atributo descripción
     private String descripcion;
-    //Atributo productor
-    private Productor productor;
     
     /**
      * Constructor vacío de la clase.
@@ -37,14 +35,12 @@ public class Residuo {
      * @param codigo parámetro código
      * @param tipo parámetro tipo
      * @param descripcion parámetro descripción
-     * @param productor parámetro productor
      */
-    public Residuo(ObjectId id, int codigo, String tipo, String descripcion, Productor productor) {
+    public Residuo(ObjectId id, int codigo, String tipo, String descripcion) {
         this.id = id;
         this.codigo = codigo;
         this.tipo = tipo;
         this.descripcion = descripcion;
-        this.productor = productor;
     }
 
     /**
@@ -52,13 +48,11 @@ public class Residuo {
      * @param codigo parámetro código
      * @param tipo parámetro tipo
      * @param descripcion parámetro descripción
-     * @param productor parámetro productor
      */
-    public Residuo(int codigo, String tipo, String descripcion, Productor productor) {
+    public Residuo(int codigo, String tipo, String descripcion) {
         this.codigo = codigo;
         this.tipo = tipo;
         this.descripcion = descripcion;
-        this.productor = productor;
     }
     
     /**
@@ -125,21 +119,9 @@ public class Residuo {
         this.descripcion = descripcion;
     }
 
-    /**
-     * Método que obtiene el productor.
-     * @return regresa productor
-     */
-    public Productor getProductor() {
-        return productor;
+    @Override
+    public String toString() {
+        return tipo;
     }
-
-    /**
-     * Método que ingresa el productor
-     * @param productor parámetro productor
-     */
-    public void setProductor(Productor productor) {
-        this.productor = productor;
-    }
-    
     
 }

@@ -78,7 +78,7 @@ public interface IDatos {
      * @param numero parámetro número
      * @return regresa un booleano de verdadero o falso
      */
-    public boolean verificarProductorNombreId(String nombre, int numero);
+    public Productor verificarProductorNombreId(String nombre, int numero);
     
     
     

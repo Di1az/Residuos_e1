@@ -67,17 +67,27 @@ public class ProductorDAO extends BaseDAO<Productor>{
     }
     
     /**
+     * Método que busca el nombre de la empresa productora
+     * @param nombre parámetro nombre
+     * @return regresa un productor
+     */
+    public Productor buscarPorNombre(String nombre) {
+        Productor es = getCollection().find(eq("nombreEmpresa", nombre)).first();
+        return es;
+    }
+    
+    /**
      * Método que tiene parámetros string e int, que busca todos los productores
      * que tengan el mismo nombre ingresado y el mmismo número identificador.
      * @param nombre parámetro nombre
      * @param numero parámetro  número
      * @return regresa un booleano verdadero o falso
      */
-    public boolean buscarPorNombreID(String nombre, int numero) {
+    public Productor buscarPorNombreID(String nombre, int numero) {
     Productor productor = getCollection()
         .find(and(eq("nombreEncargado", nombre), eq("numeroIdentificador", numero)))
         .first();
-    return productor!=null;
+    return productor;
 }
     /**
      * Método que busca un productor por su número identificador que es el id.

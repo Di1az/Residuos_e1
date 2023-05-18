@@ -61,16 +61,6 @@ public class CorreoDAO {
 		session = Session.getDefaultInstance(properties);
                 
         }
-        
-//        private void crearEmail(){
-//            properties.put("mail.smtp.host", "smtp.gmail.com");
-//            properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-//            properties.setProperty("mail.smtp.starttls.enable", "true");
-//            properties.setProperty("mail.smtp.port","587");
-//            properties.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
-//            properties.setProperty("mail.smtp.auth", "true");
-//            properties.setProperty("mail.smtp.user", emailForm);
-//        }
  
         /**
          * Método que toma el string receptor y el String traslado cómo 

@@ -5,6 +5,8 @@
  */
 package Dominio;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
@@ -21,12 +23,14 @@ public class Productor {
     private String nombreEncargado;
     //Atributo numeroIdentificador
     private int numeroIdentificador;
+    //Lista de residuos
+    private List<Residuo> residuos;
     
     /**
      * Constructor vacío.
      */
     public Productor(){
-        
+        residuos = new ArrayList<>();
     }
 
     /**
@@ -41,6 +45,7 @@ public class Productor {
         this.nombreEmpresa = nombreEmpresa;
         this.nombreEncargado = nombreEncargado;
         this.numeroIdentificador = numeroIdentificador;
+        
     }
 
     /**
@@ -53,6 +58,7 @@ public class Productor {
         this.nombreEmpresa = nombreEmpresa;
         this.nombreEncargado = nombreEncargado;
         this.numeroIdentificador = numeroIdentificador;
+        this.residuos = new ArrayList<>();
     }
     
     /**
@@ -118,6 +124,28 @@ public class Productor {
     public void setNumeroIdentificador(int numeroIdentificador) {
         this.numeroIdentificador = numeroIdentificador;
     }
+
+    /**
+     * Método que obtiene la lista de residuos.
+     * @return regresa una lista de residuos
+     */
+    public List<Residuo> getResiduos() {
+        return residuos;
+    }
+
+    /**
+     * Método que ingresa la lista de residuos.
+     * @param residuos parámetro residuos
+     */
+    public void setResiduos(List<Residuo> residuos) {
+        this.residuos = residuos;
+    }
     
-    
+    /**
+     * Método que agrega los residuos a la lista.
+     * @param residuo parámetro residuos
+     */
+    public void addResiduos (Residuo residuo){
+        this.residuos.add(residuo);
+    }
 }

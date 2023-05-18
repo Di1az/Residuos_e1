@@ -15,21 +15,20 @@ import org.bson.types.ObjectId;
 public class Traslado {
     //Atributo id
     private ObjectId id;
-    //Atributo codigoVehiculo
-    private String codigoVehiculo;
     //Atributo residuo
     private Residuo residuo;
-    //Atributo coste
-    private float coste;
     //Atributo cantidad resudios
     private int cantidad_residuos;
-    //Atributo fecha_estimada
-    private Date fecha_estimada;
-    //Atributo lote
-    private int lote;
+    //Atributo fecha_traslado
+    private Date fecha_traslado;
     //Atributo kilometros
     private float kilometros;
-    
+   //Atributo destino
+    private Destino destino;
+    //Atributo productor
+    private Productor productor;
+    //Atributo detalle de traslado
+    private Detalle_Traslado detalle;
     
     
     /**
@@ -42,23 +41,23 @@ public class Traslado {
     /**
      * Método constructor que inicializa los atributos de la clase.
      * @param id parámetro id
-     * @param codigoVehiculo parámetro codigo vehiculo
      * @param residuo parámetro residuo
-     * @param coste  parámetro coste
      * @param cantidad_residuos parámetro cantidad residuos
-     * @param fecha_estimada parámetro fecha estimada
-     * @param lote parámetro lote
+     * @param fecha_traslado parámetro fecha estimada
      * @param kilometros parámetro kilometros
+     * @param destino parámetro destino
+     * @param productor parámetro productor
+     * @param detalle parámetro detalle
      */
-    public Traslado(ObjectId id, String codigoVehiculo, Residuo residuo, float coste, int cantidad_residuos, Date fecha_estimada, int lote, float kilometros) {
+    public Traslado(ObjectId id, Residuo residuo, int cantidad_residuos, Date fecha_traslado, float kilometros, Destino destino, Productor productor, Detalle_Traslado detalle) {
         this.id = id;
-        this.codigoVehiculo = codigoVehiculo;
         this.residuo = residuo;
-        this.coste = coste;
         this.cantidad_residuos = cantidad_residuos;
-        this.fecha_estimada = fecha_estimada;
-        this.lote = lote;
+        this.fecha_traslado = fecha_traslado;
         this.kilometros = kilometros;
+        this.destino = destino;
+        this.productor = productor;
+        this.detalle = detalle;
     }
 
     /**
@@ -78,22 +77,6 @@ public class Traslado {
     }
 
     /**
-     * Método que obtiene el código de vehiculo.
-     * @return regresa codigovehiculo
-     */
-    public String getCodigoVehiculo() {
-        return codigoVehiculo;
-    }
-
-    /**
-     * Método que ingresa el código de vehiculo
-     * @param codigoVehiculo parámetro codigo vehiculo
-     */
-    public void setCodigoVehiculo(String codigoVehiculo) {
-        this.codigoVehiculo = codigoVehiculo;
-    }
-
-    /**
      * Método que obtiene el residuo.
      * @return regresa residuo.
      */
@@ -109,22 +92,7 @@ public class Traslado {
         this.residuo = residuo;
     }
     
-    /**
-     * Método que obtiene coste.
-     * @return regresa el coste
-     */
-    public float getCoste() {
-        return coste;
-    }
-
-    /**
-     * Método que ingresa el coste.
-     * @param coste parámetro coste
-     */
-    public void setCoste(float coste) {
-        this.coste = coste;
-    }
-
+    
     /**
      * Método que obtiene la cantidad de resudios.
      * @return regresa cantidad residuos
@@ -142,35 +110,19 @@ public class Traslado {
     }
 
     /**
-     * Método que obtiene la fecha estimada.
-     * @return regresa fecha estimada
+     * Método que obtiene la fecha traslado.
+     * @return regresa fecha traslado
      */
-    public Date getFecha_estimada() {
-        return fecha_estimada;
+    public Date getFecha_traslado() {
+        return fecha_traslado;
     }
     
     /**
-     * Método que ingresa la fecha estimada.
-     * @param fecha_estimada parámetro fecha estimada
+     * Método que ingresa la fecha traslado.
+     * @param fecha_traslado parámetro fecha traslado
      */
-    public void setFecha_estimada(Date fecha_estimada) {
-        this.fecha_estimada = fecha_estimada;
-    }
-
-    /**
-     * Método que obtiene el lote.
-     * @return regresa lote.
-     */
-    public int getLote() {
-        return lote;
-    }
-
-    /**
-     * Método que ingresa el lote.
-     * @param lote parámetro lote
-     */
-    public void setLote(int lote) {
-        this.lote = lote;
+    public void setFecha_traslado(Date fecha_traslado) {
+        this.fecha_traslado = fecha_traslado;
     }
 
     /**
@@ -187,6 +139,63 @@ public class Traslado {
      */
     public void setKilometros(float kilometros) {
         this.kilometros = kilometros;
+    }
+    
+    /**
+     * Método que obtiene el destino.
+     * @return regresa el destino
+     */
+    public Destino getDestino() {
+        return destino;
+    }
+
+    /**
+     * Método que ingresa el destino.
+     * @param destino parámetro destino
+     */
+    public void setDestino(Destino destino) {
+        this.destino = destino;
+    }
+
+    /**
+     * Método que obtiene el productor.
+     * @return regresa productor
+     */
+    public Productor getProductor() {
+        return productor;
+    }
+
+    /**
+     * Método que ingresa el productor.
+     * @param productor parámetro productor
+     */
+    public void setProductor(Productor productor) {
+        this.productor = productor;
+    }
+
+    /**
+     * Método que obtiene el detalle de traslado.
+     * @return regresa el detalle
+     */
+    public Detalle_Traslado getDetalle() {
+        return detalle;
+    }
+
+    /**
+     * Método que ingresa el detalle de traslado.
+     * @param detalle parámetro detalle
+     */
+    public void setDetalle(Detalle_Traslado detalle) {
+        this.detalle = detalle;
+    }
+
+    /**
+     * Método toString que nos da el destino como un texto
+     * @return regresa destino
+     */
+    @Override
+    public String toString() {
+        return destino.toString();
     }
     
     

@@ -54,14 +54,11 @@ public class FrmLoginProductores extends javax.swing.JFrame {
      * encuentre en la BD.
      */
     public void ingresarProductor() {
-        if (log.verificarProductor(txtNombreProductor.getText(), Integer.parseInt(txtNumIdentificador.getText()))) {
-
-            this.dispose();
-            ProductorDAO productorDAO = new ProductorDAO();
-            List<Productor> productores = productorDAO.buscarNumeroEmpresa(Integer.parseInt(txtNumIdentificador.getText()));
+        Productor productor= log.verificarProductor(txtNombreProductor.getText(), Integer.parseInt(txtNumIdentificador.getText()));
+        if (productor != null) {
 
             this.setVisible(false);
-            FrmMenuPrincipal menu = new FrmMenuPrincipal(productores.get(0));
+            FrmMenuPrincipal menu = new FrmMenuPrincipal(productor);
             menu.setVisible(true);
             this.dispose();
         } else {

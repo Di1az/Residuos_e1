@@ -22,13 +22,13 @@ public class JButtonTableCellRenderer extends DefaultTableCellRenderer {
   
     /**
      * Método que obtiene el botón de la tabla y lo setea en una celda específica.
-     * @param table
-     * @param value
-     * @param isSelected
-     * @param hasFocus
-     * @param row
-     * @param column
-     * @return 
+     * @param table parámetro tabla
+     * @param value parámetro value
+     * @param isSelected parámetro isSelected
+     * @param hasFocus parámetro hasFocus
+     * @param row parámetro row
+     * @param column parámetro column
+     * @return regresa un botón dentro de una celda especifica de la tabla
      */
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {

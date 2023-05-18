@@ -24,14 +24,17 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
     List<Traslado> resultados = new ArrayList<>();
     //Atributo Inferfaz log
     ILogica log;
+    
+    Productor productorInicializado;
     /**
      * Creates new form FrmConsultaTraslados
+     * @param productor parámetro productor
      */
     public FrmConsultaTraslados(Productor productor) {
         initComponents();
+        this.productorInicializado = productor;
         log = new FachadaLogica();
         buscarTraslados();
-        lblPopo.setText(productor.getNombreEmpresa());
     }
 
     /**
@@ -52,7 +55,8 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
             for (Traslado t : resultados) {
 
                 //String n = t.getNombre();
-                model.addRow(new Object[]{ t.getCantidad_residuos(),t.getCoste(), t.getFecha_estimada(), t.getLote()});
+                //String destino = t.getDestino().toString();
+                model.addRow(new Object[]{ t.getCantidad_residuos(),t.getKilometros(), t.getFecha_traslado(), t.getDestino()});
 
             }
 
@@ -84,17 +88,17 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cantidad Residuos", "Coste", "Fecha Estimada", "Lote"
+                "Cantidad Residuos", "Kilometros", "Fecha Traslado", "Destino"
             }
         ));
         jScrollPane1.setViewportView(tblResultados);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 840, 460));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 860, 460));
 
         lblSolicitud.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblSolicitud.setForeground(new java.awt.Color(102, 102, 0));
-        lblSolicitud.setText("Consulta Traslados");
-        jPanel1.add(lblSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
+        lblSolicitud.setText("Consulta Solicitudes Traslados");
+        jPanel1.add(lblSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon-logout-leave.png"))); // NOI18N
         btnRegresar.setBorderPainted(false);
@@ -134,9 +138,7 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        ProductorDAO productorDAO = new ProductorDAO();
-        List<Productor> productores = productorDAO.buscarNombreEmpresa(lblPopo.getText());
-        FrmMenuPrincipal menu = new FrmMenuPrincipal(productores.get(0));
+        FrmMenuPrincipal menu = new FrmMenuPrincipal(productorInicializado);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed

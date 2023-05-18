@@ -35,6 +35,7 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     //Atributo Inferfaz log
     ILogica log;
     
+    private Productor productorIniciado;
     
 
     /**
@@ -44,6 +45,7 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     public FrmSeleccionEmpresa(Productor productor) {
         initComponents();
         tblResultados.setDefaultRenderer(Object.class, buttonRenderer);
+        this.productorIniciado = productor;
         log=new FachadaLogica();
         lblPopo.setText(productor.getNombreEmpresa());
         //log.registrarInformacion();
@@ -177,11 +179,8 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
                 ((JButton) objeto).doClick();
                 JButton boton = (JButton) objeto;
                 if (boton.equals(btn)) {
-                    ProductorDAO productorDAO = new ProductorDAO();
-                    List<Productor> productores = productorDAO.buscarNombreEmpresa(lblPopo.getText());
-        
                     this.setVisible(false);
-                    FrmIngresarDatos ingresar = new FrmIngresarDatos(resultados.get(row), productores.get(0));
+                    FrmIngresarDatos1 ingresar = new FrmIngresarDatos1(resultados.get(row), productorIniciado);
                     ingresar.setVisible(true);
                     this.dispose();
 
@@ -198,9 +197,7 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        ProductorDAO productorDAO = new ProductorDAO();
-        List<Productor> productores = productorDAO.buscarNombreEmpresa(lblPopo.getText());
-        FrmMenuPrincipal menu = new FrmMenuPrincipal(productores.get(0));
+        FrmMenuPrincipal menu = new FrmMenuPrincipal(productorIniciado);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed

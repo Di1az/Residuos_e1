@@ -18,6 +18,10 @@ public class Detalle_Traslado {
     private int numeroVehiculos;
     //Atributo de clase totalProductos
     private int totalProductos;
+    //Atributo de Transporte transporte
+    private Transporte transporte;
+    //Atributo Empresa transportista transportista
+    private Empresa_transportista empresa;
     
     /**
      * Método constructor vacío de la clase.
@@ -31,11 +35,15 @@ public class Detalle_Traslado {
      * @param id parámetro id
      * @param numeroVehiculos párametro numeroVehiculos
      * @param totalProductos párametro totalProductos
+     * @param transporte parámetros transporte
+     * @param empresa parámetro empresa
      */
-    public Detalle_Traslado(ObjectId id, int numeroVehiculos, int totalProductos) {
+    public Detalle_Traslado(ObjectId id, int numeroVehiculos, int totalProductos, Transporte transporte, Empresa_transportista empresa) {
         this.id = id;
         this.numeroVehiculos = numeroVehiculos;
         this.totalProductos = totalProductos;
+        this.transporte = transporte;
+        this.empresa = empresa;
     }
 
     /**
@@ -85,6 +93,39 @@ public class Detalle_Traslado {
     public void setTotalProductos(int totalProductos) {
         this.totalProductos = totalProductos;
     }
+
+    /**
+     * Método que obtiene el transporte.
+     * @return regresa un transporte
+     */
+    public Transporte getTransporte() {
+        return transporte;
+    }
+
+    /**
+     * Método que ingresa el transporte.
+     * @param transporte parámetro transporte
+     */
+    public void setTransporte(Transporte transporte) {
+        this.transporte = transporte;
+    }
+
+    /**
+     * Método que obtiene la empresa.
+     * @return regresa empresa
+     */
+    public Empresa_transportista getEmpresa() {
+        return empresa;
+    }
+
+    /**
+     * Método que ingresa la empresa.
+     * @param empresa parámetro empresa
+     */
+    public void setEmpresa(Empresa_transportista empresa) {
+        this.empresa = empresa;
+    }
+    
     
     
 }
