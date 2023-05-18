@@ -6,6 +6,7 @@ package Grafica;
 
 import Dominio.Productor;
 import Persistencia.ProductorDAO;
+import com.mycompany.capalogica.ControlValidaciones;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
 import java.util.List;
@@ -21,6 +22,7 @@ public class FrmLoginProductores extends javax.swing.JFrame {
      * Variables de tipo ILogica y productor
      */
     private ILogica log;
+    private ControlValidaciones valid;
     //Atributo productor
     Productor p = new Productor();
 
@@ -30,6 +32,7 @@ public class FrmLoginProductores extends javax.swing.JFrame {
     public FrmLoginProductores() {
         initComponents();
         log = new FachadaLogica();
+        valid = new ControlValidaciones();
     }
 
     /**
@@ -41,11 +44,8 @@ public class FrmLoginProductores extends javax.swing.JFrame {
     public boolean validarVacios() {
         boolean error = true;
 
-        if (txtNombreProductor.getText().equals("")
-                && txtNumIdentificador.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Favor de no dejar campos sin llenar", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-            return false;
-        }
+        error = valid.validarVaciosInicioSesion(this.txtNombreProductor.getText(), this.txtNumIdentificador.getText());
+                
         return error;
     }
 
@@ -72,13 +72,7 @@ public class FrmLoginProductores extends javax.swing.JFrame {
      * @param evento evt
      */
     public void validarNombre(java.awt.event.KeyEvent evento) {
-        if (evento.getKeyChar() >= 33 && evento.getKeyChar() <= 64
-                || evento.getKeyChar() >= 91 && evento.getKeyChar() <= 96
-                || evento.getKeyChar() >= 123 && evento.getKeyChar() <= 127) {
-
-            evento.consume();
-
-        }
+        valid.validarNombreProductorInicioSesion(evento);
     }
 
     /**

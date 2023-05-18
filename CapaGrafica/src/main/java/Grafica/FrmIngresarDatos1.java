@@ -14,6 +14,7 @@ import Persistencia.ProductorDAO;
 import Persistencia.empresaDAO;
 import com.mycompany.capalogica.ControlCorreo;
 import com.mycompany.capalogica.ControlTraslado;
+import com.mycompany.capalogica.ControlValidaciones;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
 import java.util.Date;
@@ -30,10 +31,10 @@ import javax.swing.JOptionPane;
 public class FrmIngresarDatos1 extends javax.swing.JFrame {
 
     //
-    ILogica log;
-
-    //
-//    ControlCorreo control = new ControlCorreo();
+    private ILogica log;
+    
+    private ControlValidaciones valid;
+    
     //Atributo costo total
     float costoTotal = 0;
     //Atributo numIdentificador
@@ -52,6 +53,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
     public FrmIngresarDatos1(Empresa_transportista empresa, Productor producto) {
         initComponents();
         log = new FachadaLogica();
+        valid = new ControlValidaciones();
         this.productor = producto;
 //        costoTotal = empresa.getCostoKM();
         lblNombreEmpresaProductor.setText(producto.getNombreEmpresa());
@@ -165,13 +167,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
      * @return regreso
      */
     public boolean validarVacios() {
-        boolean error = true;
-
-        if (txtCantidad.getText().equals("")
-                && txtFechaNa.getDate() == null) {
-            JOptionPane.showMessageDialog(this, "Favor de no dejar campos sin llenar", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-            return false;
-        }
+        boolean error = valid.validarVaciosTraslado(this.txtCantidad.getText(), this.txtFechaNa.getDate()) ;
         return error;
     }
     
@@ -181,18 +177,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
      * @param evento
      */
     public void validarCaracteres(java.awt.event.KeyEvent evento){
-        if(evento.getKeyChar()>=33 && evento.getKeyChar() <=34
-                || evento.getKeyChar()>=36 && evento.getKeyChar() <=47
-                ||evento.getKeyChar()>=58 && evento.getKeyChar() <=64
-                || evento.getKeyChar()>=91 && evento.getKeyChar() <=96
-                || evento.getKeyChar()>=123 && evento.getKeyChar() <=208
-                || evento.getKeyChar()>=210 && evento.getKeyChar() <=240
-                || evento.getKeyChar()>=242 && evento.getKeyChar() <=255){
-            
-            evento.consume();
-            
-        }
-        
+        valid.validarCaracteresTraslado(evento);
     }
 
     /**
@@ -202,17 +187,10 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
      * @return regresa un booleano verdadero o falso.
      */
     public boolean validarFecha(Date fecha) {
-        Date hoy = new Date(); // Obtiene la fecha de hoy
 
-        // Compara las fechas utilizando el método compareTo()
-        // Si la fecha proporcionada es anterior a la fecha de hoy, devuelve false
-        if (fecha.compareTo(hoy) < 0) {
-            JOptionPane.showMessageDialog(this, "Fecha inválida");
-            return false;
+        boolean fech = valid.validarFechaTraslado(fecha);
 
-        }
-
-        return true; // Si la fecha es igual o posterior a la fecha de hoy, devuelve true
+        return fech; // Si la fecha es igual o posterior a la fecha de hoy, devuelve true
     }
 
 //    public void calcularCosto(){
