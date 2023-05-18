@@ -5,7 +5,9 @@
 package Grafica;
 
 import Dominio.Empresa_transportista;
+import Dominio.Productor;
 import Dominio.Traslado;
+import Persistencia.ProductorDAO;
 import com.mycompany.capalogica.ILogica;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +26,10 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
     /**
      * Creates new form FrmConsultaTraslados
      */
-    public FrmConsultaTraslados() {
+    public FrmConsultaTraslados(Productor productor) {
         initComponents();
         buscarTraslados();
+        lblPopo.setText(productor.getNombreEmpresa());
     }
 
      private void buscarTraslados() {
@@ -62,7 +65,9 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblResultados = new javax.swing.JTable();
         lblSolicitud = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        lblPopo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,8 +90,21 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
         lblSolicitud.setText("Consulta Traslados");
         jPanel1.add(lblSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon-logout-leave.png"))); // NOI18N
+        btnRegresar.setBorderPainted(false);
+        btnRegresar.setContentAreaFilled(false);
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pantallaTabla 3.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        lblPopo.setText("jLabel2");
+        jPanel1.add(lblPopo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,45 +121,57 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        ProductorDAO productorDAO = new ProductorDAO();
+        List<Productor> productores = productorDAO.buscarNombreEmpresa(lblPopo.getText());
+        FrmMenuPrincipal menu = new FrmMenuPrincipal(productores.get(0));
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmConsultaTraslados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmConsultaTraslados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmConsultaTraslados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmConsultaTraslados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmConsultaTraslados().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(FrmConsultaTraslados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(FrmConsultaTraslados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(FrmConsultaTraslados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(FrmConsultaTraslados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new FrmConsultaTraslados().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblPopo;
     private javax.swing.JLabel lblSolicitud;
     private javax.swing.JTable tblResultados;
     // End of variables declaration//GEN-END:variables

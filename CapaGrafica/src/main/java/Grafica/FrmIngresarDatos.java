@@ -8,13 +8,17 @@ import Dominio.Empresa_transportista;
 import Dominio.Productor;
 import Dominio.Residuo;
 import Dominio.Traslado;
+import Persistencia.ProductorDAO;
 import Persistencia.empresaDAO;
 import com.mycompany.capalogica.ControlCorreo;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
 import java.util.Date;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Random;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +31,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     ControlCorreo control = new ControlCorreo();
     float costoTotal = 0;
     Empresa_transportista empresa;
+    private int numIdentificador;
     /**
      * Creates new form FrmIngresarDatos
      * @param empresa
@@ -35,6 +40,9 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     public FrmIngresarDatos(Empresa_transportista empresa, Productor producto) {
         initComponents();
         log = new FachadaLogica();
+        Random random = new Random();
+        numIdentificador=random.nextInt(1000);
+        lblNumeroLote.setText(String.valueOf(numIdentificador));
         costoTotal = empresa.getCostoKM();
         this.empresa = empresa;
         lblNombreEmpresaProductor.setText(producto.getNombreEmpresa());
@@ -50,8 +58,8 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
 
         t.setResiduo(residuoSeleccionado);
         t.setCantidad_residuos(Integer.valueOf(txtCantidad.getText()));
-        t.setLote(Integer.valueOf(txtNumLote.getText()));
-        t.setKilometros(Integer.valueOf(txtKilometros.getText()));
+        t.setLote(Integer.valueOf(txtKilometros.getText()));
+        t.setKilometros(Integer.valueOf(lblNumeroLote.getText()));
         //Date fechita = new Date();
         // Supongamos que tienes una variable llamada fechaSeleccionada de tipo Calendar que contiene la fecha seleccionada por el usuario
         Calendar fechaSeleccionada = Calendar.getInstance();
@@ -112,16 +120,17 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
-        txtNumLote = new javax.swing.JTextField();
         cmbProducto = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         txtKilometros = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtDireccion1 = new javax.swing.JTextField();
         txtFechaNa = new com.toedter.calendar.JDateChooser();
+        lblNumeroLote = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblNombreEmpresaProductor = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -154,7 +163,6 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         jLabel4.setText("Dirección destino");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
         jPanel2.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 310, -1));
-        jPanel2.add(txtNumLote, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 310, -1));
 
         cmbProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Cloro", "Plomo", "Amoniaco", "Cianuro" }));
         jPanel2.add(cmbProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 310, -1));
@@ -169,6 +177,10 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
         jPanel2.add(txtDireccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 310, -1));
         jPanel2.add(txtFechaNa, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 310, 30));
+
+        lblNumeroLote.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblNumeroLote.setText("jLabel8");
+        jPanel2.add(lblNumeroLote, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 310, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 720, 370));
 
@@ -189,6 +201,16 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 540, -1, -1));
         jPanel1.add(lblNombreEmpresaProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 110, 90, 30));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon-arrow-wide-left.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame 3.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -204,6 +226,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
@@ -212,12 +235,40 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
          String traslado = getTextoCorreo(t);
          
          control.correoEnvio(empresa.getEmail(), traslado);
+         JOptionPane.showMessageDialog(this, "Se agrego correctamente");
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        txtCantidad.setText(" ");
+        lblNumeroLote.setText(" ");
+        cmbProducto.setSelectedIndex(0);
+        txtKilometros.setText(" ");
+        txtDireccion1.setText(" ");
+        txtFechaNa.setDate(null);
         
+        int result = JOptionPane.showOptionDialog(this, "¿Seguro que quieres cancelar la acción?", "Aviso", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+        
+        if (result == JOptionPane.OK_OPTION) {
+            this.setVisible(false);
+            ProductorDAO productorDAO = new ProductorDAO();
+            List<Productor> productores = productorDAO.buscarNombreEmpresa(lblNombreEmpresaProductor.getText());
+            FrmSeleccionEmpresa seleccion = new FrmSeleccionEmpresa(productores.get(0));
+            seleccion.setVisible(true);
+        } else {
+            
+        }
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        ProductorDAO productorDAO = new ProductorDAO();
+        List<Productor> productores = productorDAO.buscarNombreEmpresa(lblNombreEmpresaProductor.getText());
+        FrmSeleccionEmpresa seleccion = new FrmSeleccionEmpresa(productores.get(0));
+        seleccion.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,6 +310,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cmbProducto;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -269,11 +321,11 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblNombreEmpresaProductor;
+    private javax.swing.JLabel lblNumeroLote;
     private javax.swing.JLabel lblSolicitud;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtDireccion1;
     private com.toedter.calendar.JDateChooser txtFechaNa;
     private javax.swing.JTextField txtKilometros;
-    private javax.swing.JTextField txtNumLote;
     // End of variables declaration//GEN-END:variables
 }

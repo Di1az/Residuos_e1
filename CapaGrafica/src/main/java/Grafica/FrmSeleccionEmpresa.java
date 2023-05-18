@@ -90,6 +90,7 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
         lblSolicitud = new javax.swing.JLabel();
         cmbSeleccion = new javax.swing.JComboBox<>();
         txtBusqueda = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JButton();
         blFondo = new javax.swing.JLabel();
         lblPopo = new javax.swing.JLabel();
 
@@ -123,6 +124,16 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
         cmbSeleccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Por Partes", "Total" }));
         jPanel1.add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, -1, -1));
         jPanel1.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 470, 30));
+
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon-logout-leave.png"))); // NOI18N
+        btnRegresar.setBorderPainted(false);
+        btnRegresar.setContentAreaFilled(false);
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         blFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pantallaTabla 3.png"))); // NOI18N
         jPanel1.add(blFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -179,6 +190,16 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tblResultadosMouseClicked
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        ProductorDAO productorDAO = new ProductorDAO();
+        List<Productor> productores = productorDAO.buscarNombreEmpresa(lblPopo.getText());
+        FrmMenuPrincipal menu = new FrmMenuPrincipal(productores.get(0));
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -218,6 +239,7 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     //Variables de la clase innamovibles 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel blFondo;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cmbSeleccion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

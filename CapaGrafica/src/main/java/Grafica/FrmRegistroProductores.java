@@ -5,9 +5,12 @@
 package Grafica;
 
 import Dominio.Productor;
+import Persistencia.ProductorDAO;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
+import java.util.List;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -80,7 +83,10 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnRegresar.setText("Regresar");
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon-logout-leave.png"))); // NOI18N
+        btnRegresar.setBorderPainted(false);
+        btnRegresar.setContentAreaFilled(false);
+        btnRegresar.setOpaque(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -147,6 +153,11 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
         jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 170, 60));
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 500, 160, 50));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registroProducto 1.png"))); // NOI18N
@@ -171,7 +182,21 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        
         this.registrarProductor();
+        
+        int result = JOptionPane.showOptionDialog(this, "Se agrego correctamente", "Aviso", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+        
+        if (result == JOptionPane.OK_OPTION) {
+            this.setVisible(false);
+            FrmLoginProductores login = new FrmLoginProductores();
+            login.setVisible(true);
+            this.dispose();
+        } else {
+            
+        }
+
+        
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtNombreProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProductorActionPerformed
@@ -185,6 +210,24 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
     private void txtNombreProductorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductorKeyTyped
         validarNombre(evt);
     }//GEN-LAST:event_txtNombreProductorKeyTyped
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        txtNombreEmpresa.setText(" ");
+        txtNombreProductor.setText(" ");
+        
+        int result = JOptionPane.showOptionDialog(this, "¿Seguro que quieres cancelar la acción?", "Aviso", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+        
+        if (result == JOptionPane.OK_OPTION) {
+            this.setVisible(false);
+            
+            FrmLoginProductores login = new FrmLoginProductores();
+            login.setVisible(true);
+            this.dispose();
+        } else {
+            
+        }
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

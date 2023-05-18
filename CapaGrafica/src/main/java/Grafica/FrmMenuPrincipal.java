@@ -115,16 +115,23 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     private void btnRegistrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProductosActionPerformed
         // TODO add your handling code here:
+        ProductorDAO productorDAO = new ProductorDAO();
+        List<Productor> productores = productorDAO.buscarNombreEmpresa(lblNombreEmpresa.getText());
+        
         this.setVisible(false);
-        FrmRegistrarProductos registroProductos= new FrmRegistrarProductos();
+        FrmRegistrarProductos registroProductos= new FrmRegistrarProductos(productores.get(0));
         registroProductos.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegistrarProductosActionPerformed
 
     private void btnConsultaTrasladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaTrasladosActionPerformed
         // TODO add your handling code here:
+        
+        ProductorDAO productorDAO = new ProductorDAO();
+        List<Productor> productores = productorDAO.buscarNombreEmpresa(lblNombreEmpresa.getText());
+        
         this.setVisible(false);
-        FrmConsultaTraslados traslados= new FrmConsultaTraslados();
+        FrmConsultaTraslados traslados= new FrmConsultaTraslados(productores.get(0));
         traslados.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnConsultaTrasladosActionPerformed
