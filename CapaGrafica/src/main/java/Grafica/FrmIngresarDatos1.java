@@ -174,6 +174,26 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
         }
         return error;
     }
+    
+    /**
+     * Metodo que valida que no se puedan poner caracteres especiales
+     *
+     * @param evento
+     */
+    public void validarCaracteres(java.awt.event.KeyEvent evento){
+        if(evento.getKeyChar()>=33 && evento.getKeyChar() <=34
+                || evento.getKeyChar()>=36 && evento.getKeyChar() <=47
+                ||evento.getKeyChar()>=58 && evento.getKeyChar() <=64
+                || evento.getKeyChar()>=91 && evento.getKeyChar() <=96
+                || evento.getKeyChar()>=123 && evento.getKeyChar() <=208
+                || evento.getKeyChar()>=210 && evento.getKeyChar() <=240
+                || evento.getKeyChar()>=242 && evento.getKeyChar() <=255){
+            
+            evento.consume();
+            
+        }
+        
+    }
 
     /**
      * Metodo que se encarga de que la fecha estimada no sea menor al dia de hoy
@@ -224,6 +244,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
         cmbTratamiento = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         txtKilometros = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblNombreEmpresaProductor = new javax.swing.JLabel();
@@ -256,6 +277,11 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
                 txtCantidadActionPerformed(evt);
             }
         });
+        txtCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantidadKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 310, -1));
 
         cmbProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -275,11 +301,16 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
                 txtDireccionActionPerformed(evt);
             }
         });
+        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 250, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel6.setText("Dirección destino");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
+        jLabel6.setText("Tratamiento");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
 
         cmbTratamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "residuo", "uso para maquillaje", "etc." }));
         cmbTratamiento.addActionListener(new java.awt.event.ActionListener() {
@@ -287,12 +318,22 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
                 cmbTratamientoActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 210, 30));
+        jPanel2.add(cmbTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 210, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel9.setText("Kilometros");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
-        jPanel2.add(txtKilometros, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 310, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
+
+        txtKilometros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtKilometrosKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txtKilometros, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 310, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel8.setText("Dirección destino");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 720, 370));
 
@@ -450,6 +491,40 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
     private void cmbProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbProductoActionPerformed
+    /**
+     * Método que valida el solo escribir números
+     * @param evt evt
+     */
+    private void txtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadKeyTyped
+        char c = evt.getKeyChar();
+
+        if ((c < '0' || c > '9')) {
+            evt.consume();
+        }
+
+        if (txtCantidad.getText().length() == 3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCantidadKeyTyped
+    /**
+     * Método que valida el solo escribir números
+     * @param evt evt
+     */
+    private void txtKilometrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKilometrosKeyTyped
+        char c = evt.getKeyChar();
+
+        if ((c < '0' || c > '9')) {
+            evt.consume();
+        }
+
+        if (txtKilometros.getText().length() == 3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtKilometrosKeyTyped
+
+    private void txtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyTyped
+        this.validarCaracteres(evt);
+    }//GEN-LAST:event_txtDireccionKeyTyped
 
     /**
      * @param args the command line arguments
@@ -500,6 +575,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

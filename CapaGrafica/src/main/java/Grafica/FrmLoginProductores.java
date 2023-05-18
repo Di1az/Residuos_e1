@@ -65,6 +65,21 @@ public class FrmLoginProductores extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Usuario o número inválido");
         }
     }
+    
+    /**
+     * Método de validación que solo permite letras y el espacio
+     *
+     * @param evento evt
+     */
+    public void validarNombre(java.awt.event.KeyEvent evento) {
+        if (evento.getKeyChar() >= 33 && evento.getKeyChar() <= 64
+                || evento.getKeyChar() >= 91 && evento.getKeyChar() <= 96
+                || evento.getKeyChar() >= 123 && evento.getKeyChar() <= 127) {
+
+            evento.consume();
+
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,6 +148,15 @@ public class FrmLoginProductores extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txtNumIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 190, 30));
+
+        txtNombreProductor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreProductorKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreProductorKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 190, 30));
 
         btnLogin.setText("Log in");
@@ -219,6 +243,22 @@ public class FrmLoginProductores extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtNumIdentificadorKeyTyped
+    /**
+     * Método que llama al metodo validar nombre para que no se puedan colocar núneros
+     * y caracteres especiales en el textfield
+     * @param evt evt
+     */
+    private void txtNombreProductorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductorKeyPressed
+       
+    }//GEN-LAST:event_txtNombreProductorKeyPressed
+    /**
+     * Método que llama al metodo validar nombre para que no se puedan colocar núneros
+     * y caracteres especiales en el textfield
+     * @param evt evt
+     */
+    private void txtNombreProductorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductorKeyTyped
+        this.validarNombre(evt);
+    }//GEN-LAST:event_txtNombreProductorKeyTyped
 
     /**
      * @param args the command line arguments
