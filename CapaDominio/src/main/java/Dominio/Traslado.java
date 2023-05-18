@@ -30,6 +30,8 @@ public class Traslado {
     //Atributo kilometros
     private float kilometros;
     
+    
+    
     /**
      * Método constructor vacío.
      */

@@ -8,6 +8,7 @@ import Dominio.Empresa_transportista;
 import Dominio.Productor;
 import Dominio.Traslado;
 import Persistencia.ProductorDAO;
+import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
      */
     public FrmConsultaTraslados(Productor productor) {
         initComponents();
+        log = new FachadaLogica();
         buscarTraslados();
         lblPopo.setText(productor.getNombreEmpresa());
     }

@@ -239,8 +239,6 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
 
         }
        }
-        
-
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
