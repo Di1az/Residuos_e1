@@ -1,19 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.capalogica;
+package Subsistemas;
 
 import Persistencia.CorreoDAO;
-import java.util.Calendar;
 
 /**
  *
- * @author koine
+ * @author oscar
  */
-public class ControlCorreo {
-    
+public class ControlCorreo implements ICorreo{
+
     //Atributo de tipo correo inicializado con el correoDAO
     CorreoDAO correo = new CorreoDAO();
     
@@ -30,8 +28,9 @@ public class ControlCorreo {
      * @param tipoTras parámetro tipo traslado
      * @return regresa un traslado
      */
-    public String correoTexto(String direccion, String empresa, String km, String productor, String residuo, String cantRes, String fecha_estimada, String tipoTras){
-        String traslado = "";
+    @Override
+    public String correoTexto(String direccion, String empresa, String km, String productor, String residuo, String cantRes, String fecha_estimada, String tipoTras) {
+         String traslado = "";
         
         traslado = "<h2> Residuos -  Traslados </h2> <br>"
                 + "¡Buenos días!, "+ empresa +"<br>"
@@ -46,14 +45,15 @@ public class ControlCorreo {
         
         return traslado;
     }
-    
-    /**
+
+      /**
      * Método que llama el método sendEmail de la clase dao, que obtiene dos
      * Strings y le envía estos parámetros para envíar el correo al usuario.
      * @param receptor parámetro receptor
      * @param traslado parámetro traslado
-     */
-    public void correoEnvio(String receptor, String traslado){
+     * */
+    @Override
+    public void correoEnvio(String receptor, String traslado) {
         correo.sendEmail(receptor, traslado);
     }
     

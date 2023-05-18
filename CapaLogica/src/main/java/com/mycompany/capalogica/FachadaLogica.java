@@ -21,16 +21,7 @@ import java.util.List;
  */
 public class FachadaLogica implements ILogica{
 
-    /**
-     * Método que guarda traslados, creando una instancia de controltraslado
-     * que llama al método de guardar traslado e ingresa un parámetro traslado.
-     * @param traslado parámetro traslado
-     */
-    @Override
-    public void guardarTraslado(Traslado traslado) {
-        ControlTraslado ct= new ControlTraslado();
-        ct.guardarTraslado(traslado);
-    }
+    
     
     /**
      * Método que guarda productores, creando una instancia de controlproductor
@@ -97,16 +88,7 @@ public class FachadaLogica implements ILogica{
          return cone.buscarTodos();
     }
 
-    /**
-     * Método que busca todos los traslados, que crea una instancia de 
-     * controlTraslado y llama al método buscarTodos de la clase.
-     * @return regresa una lista de traslados.
-     */
-    @Override
-    public List<Traslado> buscarTodosT() {
-       ControlTraslado tras = new ControlTraslado();
-       return tras.buscarTodos();
-    }
+    
 
     /**
      * Método correoTexto que llama al mmétodo correoTexto de la clase control correo
@@ -122,23 +104,7 @@ public class FachadaLogica implements ILogica{
      * @param tipoTras parámetro tipo traslado
      * @return regresa el método correoTexto
      */
-    @Override
-    public String correoTexto(String direccion, String empresa, String km, String productor, String residuo, String cantRes, String fecha_estimada, String tipoTras) {
-        ControlCorreo correo = new ControlCorreo();
-       return correo.correoTexto(direccion, empresa, km, productor, residuo, cantRes, fecha_estimada, tipoTras);
-    }
-
-    /**
-     * Método que llama al método correoEnvio de la clase ControlCorreo para 
-     * enviar el correo obteniendo el receptor y el traslado.
-     * @param receptor parámetro receptor
-     * @param traslado parámetro traslado
-     */
-    @Override
-    public void correoEnvio(String receptor, String traslado) {
-      ControlCorreo correo = new ControlCorreo();
-      correo.correoEnvio(receptor, traslado);
-    }
+   
     
   
 }

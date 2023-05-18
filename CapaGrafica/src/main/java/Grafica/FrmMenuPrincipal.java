@@ -109,8 +109,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      */
     private void btnSolicitudEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudEmpresasActionPerformed
         // TODO add your handling code here:
-        FachadaLogica log= new FachadaLogica();
-        log.registrarInformacion();
+        
         this.setVisible(false);
         FrmSeleccionEmpresa seleccion= new FrmSeleccionEmpresa(productorIniciado);
         seleccion.setVisible(true);
@@ -132,6 +131,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     private void btnConsultaTraslados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaTraslados1ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        FrmConsultaTraslados tralados = new FrmConsultaTraslados(productorIniciado);
+        tralados.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnConsultaTraslados1ActionPerformed
 
     /**

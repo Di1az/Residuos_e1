@@ -245,6 +245,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
      * @param evt parámetro evento
      */
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+
         
        if (validarVacios()){
            this.registrarProductor();
@@ -252,6 +253,8 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
         int result = JOptionPane.showOptionDialog(this, "Se agrego correctamente", "Aviso", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 
         if (result == JOptionPane.OK_OPTION) {
+            FachadaLogica log= new FachadaLogica();
+        log.registrarInformacion();
             this.setVisible(false);
             FrmLoginProductores login = new FrmLoginProductores();
             login.setVisible(true);
