@@ -25,15 +25,17 @@ import javax.swing.JOptionPane;
  * @author hoshi
  */
 public class FrmIngresarDatos extends javax.swing.JFrame {
-    
+
     ILogica log;
     empresaDAO empresaDAO = new empresaDAO();
     ControlCorreo control = new ControlCorreo();
     float costoTotal = 0;
     Empresa_transportista empresa;
     private int numIdentificador;
+
     /**
      * Creates new form FrmIngresarDatos
+     *
      * @param empresa
      * @param producto
      */
@@ -41,14 +43,19 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         initComponents();
         log = new FachadaLogica();
         Random random = new Random();
-        numIdentificador=random.nextInt(1000);
+        numIdentificador = random.nextInt(1000);
         lblNumeroLote.setText(String.valueOf(numIdentificador));
         costoTotal = empresa.getCostoKM();
         this.empresa = empresa;
         lblNombreEmpresaProductor.setText(producto.getNombreEmpresa());
     }
-    
-    public Traslado solicitudTraslado(){
+
+    /**
+     * Metodo que solicita traslado y lo registra en la bd
+     *
+     * @return
+     */
+    public Traslado solicitudTraslado() {
         Traslado t = new Traslado();
         // Supongamos que tienes un JComboBox llamado cmbProducto que contiene objetos de tipo Producto
         JComboBox<Residuo> cmbProducto = new JComboBox<>();
@@ -72,37 +79,77 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
 
         // Establece la nueva fecha estimada
         t.setFecha_estimada(fechaSeleccionada.getTime());
-        costoTotal = costoTotal*Integer.valueOf(txtKilometros.getText());
+        costoTotal = costoTotal * Integer.valueOf(txtKilometros.getText());
         t.setCoste((int) costoTotal);
         log.guardarTraslado(t);
-        
+
         return t;
     }
 //<<<<<<< Updated upstream
-    
-    public String getTextoCorreo(Traslado t){
+
+    /**
+     * Metodo que obtiene el texto del correo enviado
+     *
+     * @param t
+     * @return
+     */
+    public String getTextoCorreo(Traslado t) {
         String traslado = "";
-        
+
 //         String nombreP = t.getResiduo().getProductor().getNombreEmpresa();
 //         String nombreR = t.getResiduo().getDescripcion();
-         String direccion = this.txtDireccion1.getText();
-         String km = this.txtKilometros.getText();
-         String fechaEs = t.getFecha_estimada().toString();
-         String cantidadR = this.txtCantidad.getText();
-                 
-         traslado = control.correoTexto(direccion, empresa.getNombre(), km ,lblNombreEmpresaProductor.getText(), cmbProducto.getSelectedItem().toString(), cantidadR,fechaEs ,empresa.getTipo_traslado());
-        
+        String direccion = this.txtDireccion1.getText();
+        String km = this.txtKilometros.getText();
+        String fechaEs = t.getFecha_estimada().toString();
+        String cantidadR = this.txtCantidad.getText();
+
+        traslado = control.correoTexto(direccion, empresa.getNombre(), km, lblNombreEmpresaProductor.getText(), cmbProducto.getSelectedItem().toString(), cantidadR, fechaEs, empresa.getTipo_traslado());
+
         return traslado;
     }
-    
-    
+
+    /**
+     * Método que nos ayuda para que no existan vacíos dentro del cuadro de
+     * texto.
+     *
+     * @return regreso
+     */
+    public boolean validarVacios() {
+        boolean error = true;
+
+        if (txtCantidad.getText().equals("")
+                && txtDireccion1.getText().equals("") && txtFechaNa.getDate() == null
+                && txtKilometros.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Favor de no dejar campos sin llenar", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        return error;
+    }
+
+    /**
+     * Metodo que se encarga de que la fecha estimada no sea menor al dia de hoy
+     *
+     * @param fecha
+     * @return
+     */
+    public static boolean validarFecha(Date fecha) {
+        Date hoy = new Date(); // Obtiene la fecha de hoy
+
+        // Compara las fechas utilizando el método compareTo()
+        // Si la fecha proporcionada es anterior a la fecha de hoy, devuelve false
+        if (fecha.compareTo(hoy) < 0) {
+            return false;
+        }
+
+        return true; // Si la fecha es igual o posterior a la fecha de hoy, devuelve true
+    }
+
 //    public void calcularCosto(){
 //        empresa
 //        
 //    }
 //=======
 //>>>>>>> Stashed changes
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -229,15 +276,30 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     *
+     * @param evt
+     */
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-         Traslado t = this.solicitudTraslado();
-         String traslado = getTextoCorreo(t);
-         
-         control.correoEnvio(empresa.getEmail(), traslado);
-         JOptionPane.showMessageDialog(this, "Se agrego correctamente");
+        if (validarVacios()) {
+            if (validarFecha(txtFechaNa.getDate())) {
+                Traslado t = this.solicitudTraslado();
+                String traslado = getTextoCorreo(t);
+
+                control.correoEnvio(empresa.getEmail(), traslado);
+                JOptionPane.showMessageDialog(this, "Se agrego correctamente");
+            }
+
+        }
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    /**
+     * Metodo que elimina los datos agregados
+     *
+     * @param evt
+     */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         txtCantidad.setText(" ");
@@ -246,9 +308,9 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         txtKilometros.setText(" ");
         txtDireccion1.setText(" ");
         txtFechaNa.setDate(null);
-        
+
         int result = JOptionPane.showOptionDialog(this, "¿Seguro que quieres cancelar la acción?", "Aviso", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-        
+
         if (result == JOptionPane.OK_OPTION) {
             this.setVisible(false);
             ProductorDAO productorDAO = new ProductorDAO();
@@ -256,10 +318,14 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
             FrmSeleccionEmpresa seleccion = new FrmSeleccionEmpresa(productores.get(0));
             seleccion.setVisible(true);
         } else {
-            
+
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    /**
+     *
+     * @param evt
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -267,7 +333,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
         List<Productor> productores = productorDAO.buscarNombreEmpresa(lblNombreEmpresaProductor.getText());
         FrmSeleccionEmpresa seleccion = new FrmSeleccionEmpresa(productores.get(0));
         seleccion.setVisible(true);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

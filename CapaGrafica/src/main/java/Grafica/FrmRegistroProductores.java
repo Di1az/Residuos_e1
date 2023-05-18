@@ -18,27 +18,56 @@ import javax.swing.JOptionPane;
  */
 public class FrmRegistroProductores extends javax.swing.JFrame {
 
+    /**
+     * Variable de de tipo ILogica y de 
+     * tipo entero
+     */
     private int numIdentificador;
     private ILogica log;
-            
+
+    
+    /**
+     * Metodo constructor de la clase
+     */
     public FrmRegistroProductores() {
         initComponents();
         Random random = new Random();
-        numIdentificador=random.nextInt(1000);
+        numIdentificador = random.nextInt(1000);
         jLabel3.setText(String.valueOf(numIdentificador));
         log = new FachadaLogica();
     }
-    
-    public void registrarProductor(){
+
+    /**
+     * Metodo que se encarga de registrar al productor
+     * dependiendo de los datos puestos por el usuario
+     */
+    public void registrarProductor() {
         Productor p = new Productor();
         p.setNombreEmpresa(txtNombreEmpresa.getText());
         System.out.println(txtNombreProductor.getText());
         p.setNombreEncargado(txtNombreProductor.getText());
         p.setNumeroIdentificador(numIdentificador);
         log.guardarProductor(p);
-        
+
     }
-    
+
+    /**
+     * Método que nos ayuda para que no existan vacíos dentro del cuadro de
+     * texto.
+     *
+     * @return regreso
+     */
+    public boolean validarVacios() {
+        boolean error = true;
+
+        if (txtNombreEmpresa.getText().equals("")
+                && txtNombreProductor.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Favor de no dejar campos sin llenar", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        return error;
+    }
+
     /**
      * Método de validación que solo permite letras y el espacio
      *
@@ -169,10 +198,18 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt 
+     */
     private void txtNombreEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpresaActionPerformed
-       
+
     }//GEN-LAST:event_txtNombreEmpresaActionPerformed
 
+    /**
+     * Metodo que regresa al menu principal
+     * @param evt 
+     */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -181,89 +218,113 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    /**
+     * Metodo que se encarga de llamar al metodo registrar productor
+     * y confirma la accion
+     * @param evt 
+     */
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        
-        this.registrarProductor();
-        
+
+       if (validarVacios()){
+           this.registrarProductor();
+
         int result = JOptionPane.showOptionDialog(this, "Se agrego correctamente", "Aviso", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-        
+
         if (result == JOptionPane.OK_OPTION) {
             this.setVisible(false);
             FrmLoginProductores login = new FrmLoginProductores();
             login.setVisible(true);
             this.dispose();
         } else {
-            
-        }
 
+        }
+       }
         
+
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void txtNombreProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProductorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreProductorActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void txtNombreEmpresaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpresaKeyTyped
         validarNombre(evt);
     }//GEN-LAST:event_txtNombreEmpresaKeyTyped
 
+    /**
+     * 
+     * @param evt 
+     */
     private void txtNombreProductorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductorKeyTyped
         validarNombre(evt);
     }//GEN-LAST:event_txtNombreProductorKeyTyped
 
+    /**
+     * Cancelar accion
+     * @param evt 
+     */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         txtNombreEmpresa.setText(" ");
         txtNombreProductor.setText(" ");
-        
+
         int result = JOptionPane.showOptionDialog(this, "¿Seguro que quieres cancelar la acción?", "Aviso", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-        
+
         if (result == JOptionPane.OK_OPTION) {
             this.setVisible(false);
-            
+
             FrmLoginProductores login = new FrmLoginProductores();
             login.setVisible(true);
             this.dispose();
         } else {
-            
+
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistroProductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistroProductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistroProductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistroProductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmRegistroProductores().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(FrmRegistroProductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(FrmRegistroProductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(FrmRegistroProductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(FrmRegistroProductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//               // new FrmRegistroProductores().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;

@@ -17,31 +17,48 @@ import javax.swing.JOptionPane;
  */
 public class FrmLoginProductores extends javax.swing.JFrame {
 
+    /**
+     * Variables de tipo ILogica y productor
+     */
     private ILogica log;
     Productor p = new Productor();
-    
+
+    /**
+     * Constructor de la clase
+     */
     public FrmLoginProductores() {
         initComponents();
-        log=new FachadaLogica();
+        log = new FachadaLogica();
     }
-    
+
+    /**
+     * Método que nos ayuda para que no existan vacíos dentro del cuadro de
+     * texto.
+     *
+     * @return regreso
+     */
+    public boolean validarVacios() {
+        boolean error = true;
+
+        if (txtNombreProductor.getText().equals("")
+                && txtNumIdentificador.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Favor de no dejar campos sin llenar", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        return error;
+    }
+
+    /**
+     * Metodo que se encarga de verificar que el productor ingresado se
+     * encuentre en la BD
+     */
     public void ingresarProductor() {
         if (log.verificarProductor(txtNombreProductor.getText(), Integer.parseInt(txtNumIdentificador.getText()))) {
-            
-//                PersonaDAO personaDAO = new PersonaDAO();
-//                //PONER TXT.GETTEXT DENTRO DE DONDE ESTAN LAS COMILLAS AHORITA LISTO
-//
-//                List<Persona> persona = personaDAO.buscarRfc(lblRfc.getText());
-//
-//                
-//                    JOptionPane.showMessageDialog(this, "Se encontro el rfc");
-//                    this.setVisible(false);
-//                    FrHistorialLicencia historial = new FrHistorialLicencia(persona.get(0));
-//                    historial.setVisible(true);
-//                    this.dispose();
+
+            this.dispose();
             ProductorDAO productorDAO = new ProductorDAO();
             List<Productor> productores = productorDAO.buscarNumeroEmpresa(Integer.parseInt(txtNumIdentificador.getText()));
-            
+
             this.setVisible(false);
             FrmMenuPrincipal menu = new FrmMenuPrincipal(productores.get(0));
             menu.setVisible(true);
@@ -74,7 +91,6 @@ public class FrmLoginProductores extends javax.swing.JFrame {
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -113,6 +129,11 @@ public class FrmLoginProductores extends javax.swing.JFrame {
                 txtNumIdentificadorActionPerformed(evt);
             }
         });
+        txtNumIdentificador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumIdentificadorKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtNumIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 190, 30));
         jPanel2.add(txtNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 190, 30));
 
@@ -148,22 +169,55 @@ public class FrmLoginProductores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     *
+     * @param evt
+     */
     private void txtNumIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumIdentificadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumIdentificadorActionPerformed
 
+    /**
+     *
+     * @param evt
+     */
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
         // TODO add your handling code here:
+
         this.setVisible(false);
         FrmRegistroProductores registro = new FrmRegistroProductores();
         registro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegistroActionPerformed
 
+    /**
+     *
+     * @param evt
+     */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        this.ingresarProductor();
+        if (validarVacios()) {
+            this.ingresarProductor();
+
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    /**
+     *
+     * @param evt
+     */
+    private void txtNumIdentificadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumIdentificadorKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if ((c < '0' || c > '9')) {
+            evt.consume();
+        }
+
+        if (txtNumIdentificador.getText().length() == 3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumIdentificadorKeyTyped
 
     /**
      * @param args the command line arguments
