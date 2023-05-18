@@ -13,6 +13,7 @@ import Dominio.Traslado;
 import Persistencia.ProductorDAO;
 import Persistencia.empresaDAO;
 import com.mycompany.capalogica.ControlCorreo;
+import com.mycompany.capalogica.ControlTraslado;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
 import java.util.Date;
@@ -30,7 +31,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
 
     //
     ILogica log;
-    
+
     //
 //    ControlCorreo control = new ControlCorreo();
     //Atributo costo total
@@ -41,6 +42,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
     private Productor productor;
     //Atributo empresa
     private Empresa_transportista empresa;
+
     /**
      * Creates new form FrmIngresarDatos
      *
@@ -56,15 +58,52 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
         this.empresa = empresa;
         llenarComboBox();
     }
-    
+
     /**
      * Método que llena el combo box con los residuos que tenga el productor.
      */
-    public void llenarComboBox(){
+    public void llenarComboBox() {
         cmbProducto.removeAllItems();
         for (int i = 0; i < productor.getResiduos().size(); i++) {
             cmbProducto.addItem(productor.getResiduos().get(i));
         }
+    }
+
+    /**
+     * Metodo que se encarga de obtener los traslados que se han hecho
+     * en el dia
+     * @param fecha
+     * @return 
+     */
+    public int obtenerTrasladosDia(Date fecha) {
+        int count = 0;
+        ControlTraslado tra = new ControlTraslado();
+
+        // Supongamos que tienes una lista de traslados llamada "listaTraslados" que contiene todos los traslados registrados
+        for (Traslado traslado : tra.buscarTodos()) {
+            // Comparar la fecha del traslado con la fecha especificada
+            if (esMismoDia(traslado.getFecha_traslado(), fecha)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Metodo que regresa el dia de hoy
+     * @param fecha1
+     * @param fecha2
+     * @return 
+     */
+    private boolean esMismoDia(Date fecha1, Date fecha2) {
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(fecha1);
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(fecha2);
+
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)
+                && cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
     }
 
     /**
@@ -79,38 +118,25 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
         Destino destino = new Destino();
         destino.setNombre(txtDireccion.getText());
         destino.setTratamiento((String) cmbTratamiento.getSelectedItem());
-        // Supongamos que tienes una variable llamada fechaSeleccionada de tipo Calendar que contiene la fecha seleccionada por el usuario
+
         Calendar fechaSeleccionada = Calendar.getInstance();
-
-        // Obtén la fecha seleccionada por el usuario
         fechaSeleccionada.setTime(txtFechaNa.getDate());
-
-        // Agrega una semana a la fecha seleccionada
         fechaSeleccionada.add(Calendar.WEEK_OF_YEAR, 1);
-
         destino.setFecha_llegada(fechaSeleccionada.getTime());
-        
-        
-      
-        //detalle.
-        // Supongamos que tienes un JComboBox llamado cmbProducto que contiene objetos de tipo Producto
+
         t.setKilometros(Integer.valueOf(txtKilometros.getText()));
         t.setDestino(destino);
-        // Obtén el objeto seleccionado del JComboBox
         Residuo residuoSeleccionado = (Residuo) cmbProducto.getSelectedItem();
-
         t.setResiduo(residuoSeleccionado);
         t.setCantidad_residuos(Integer.valueOf(txtCantidad.getText()));
-        //Date fechita = new Date();
-        
-        // Establece la nueva fecha estimada
         t.setFecha_traslado(new Date());
+
         log.guardarTraslado(t);
 
         return t;
     }
-//<<<<<<< Updated upstream
 
+//<<<<<<< Updated upstream
     /**
      * Metodo que obtiene el texto del correo enviado.
      *
@@ -142,7 +168,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
         boolean error = true;
 
         if (txtCantidad.getText().equals("")
-                 && txtFechaNa.getDate() == null) {
+                && txtFechaNa.getDate() == null) {
             JOptionPane.showMessageDialog(this, "Favor de no dejar campos sin llenar", "Informacion", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
@@ -163,7 +189,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
         if (fecha.compareTo(hoy) < 0) {
             JOptionPane.showMessageDialog(this, "Fecha inválida");
             return false;
-            
+
         }
 
         return true; // Si la fecha es igual o posterior a la fecha de hoy, devuelve true
@@ -317,18 +343,33 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
 
     /**
      * Método action event del botón aceptar que agrega la solicitud en la base.
+     *
      * @param evt
      */
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         if (validarVacios()) {
             if (validarFecha(txtFechaNa.getDate())) {
-                Traslado t = this.solicitudTraslado();
-                JOptionPane.showMessageDialog(this, "Se agrego correctamente");
-                String traslado = getTextoCorreo(t);
+                // Validación de cantidad de traslados por día
+                int trasladosDia = obtenerTrasladosDia(new Date());
 
-                log.correoEnvio(empresa.getEmail(), traslado);
-             
+                if (trasladosDia >= 5) {
+                    // Mostrar mensaje de error o tomar alguna acción cuando se excede el límite de traslados por día
+                    JOptionPane.showMessageDialog(this, "Se ha excedido el límite de traslados por día");
+                    FrmMenuPrincipal menu = new FrmMenuPrincipal(productor);
+                    menu.setVisible(true);
+                    dispose();
+                } else {
+                    Traslado t = this.solicitudTraslado();
+                    JOptionPane.showMessageDialog(this, "Se agrego correctamente");
+                    String traslado = getTextoCorreo(t);
+
+                    log.correoEnvio(empresa.getEmail(), traslado);
+                    FrmMenuPrincipal menu = new FrmMenuPrincipal(productor);
+                    menu.setVisible(true);
+                    dispose();
+                }
+
             }
 
         }
@@ -361,6 +402,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
 
     /**
      * Método action event del botón regresar, que regresa al frame anterior.
+     *
      * @param evt parámetro evento
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -375,6 +417,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
 
     /**
      * Nada
+     *
      * @param evt parámetro evento
      */
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
@@ -383,6 +426,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
 
     /**
      * Nada
+     *
      * @param evt parámetro evento
      */
     private void cmbTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTratamientoActionPerformed
@@ -391,6 +435,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
 
     /**
      * Nada
+     *
      * @param evt parámetro evento
      */
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
@@ -399,6 +444,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
 
     /**
      * Nada
+     *
      * @param evt parámetro evento
      */
     private void cmbProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductoActionPerformed
@@ -440,7 +486,6 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
     /**
      * Componentes del frame FrmIngresarDatos
      */

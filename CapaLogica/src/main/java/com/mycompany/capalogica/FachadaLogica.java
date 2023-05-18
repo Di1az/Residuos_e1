@@ -64,6 +64,10 @@ public class FachadaLogica implements ILogica{
         Empresa_transportista empresa5= new Empresa_transportista("UKG", "Total", 29.45f,"adrian.macias@itson.edu.mx");
         me.guardarEmpresa(empresa5);
         
+        Residuo residuo1= new Residuo(1, "Amoniaco", "gas incoloro con un olor característico");
+        mr.guardarResiduo(residuo1);
+        
+        
 //        Productor productor=new Productor("Unilever", "Oscar Valenzuela", 100503);
 //        Residuo residuo1= new Residuo(1111, "Plomo", "Metal pesado", productor);
 //        mr.guardarResiduo(residuo1);

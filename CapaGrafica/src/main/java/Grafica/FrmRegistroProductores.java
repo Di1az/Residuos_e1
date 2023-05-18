@@ -53,6 +53,21 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
         residuo.setDescripcion("Muy peligroso, altamente radioactivo");
         residuo.setTipo("Plomo");
         p.addResiduos(residuo);
+        Residuo residuo2 = new Residuo();
+        residuo2.setCodigo(333);
+        residuo2.setDescripcion("Gas incoloro con un olor característico");
+        residuo2.setTipo("Amoniaco");
+        p.addResiduos(residuo2);
+        Residuo residuo3 = new Residuo();
+        residuo3.setCodigo(453);
+        residuo3.setDescripcion("Gas amarillo-verdoso formado por moléculas diatómicas de cloro");
+        residuo3.setTipo("Cloro");
+        p.addResiduos(residuo3);
+        Residuo residuo4 = new Residuo();
+        residuo4.setCodigo(259);
+        residuo4.setDescripcion("Grupo químico que consiste de un átomo de carbono conectado a un átomo de nitrógeno por tres enlaces");
+        residuo4.setTipo("Cianuro");
+        p.addResiduos(residuo4);
         log.guardarProductor(p);
         
     }

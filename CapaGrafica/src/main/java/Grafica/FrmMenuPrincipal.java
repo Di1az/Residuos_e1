@@ -6,6 +6,7 @@ package Grafica;
 
 import Dominio.Productor;
 import Persistencia.ProductorDAO;
+import com.mycompany.capalogica.FachadaLogica;
 import java.util.List;
 
 /**
@@ -37,8 +38,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnSolicitudEmpresas = new javax.swing.JButton();
-        btnRegistrarProductos = new javax.swing.JButton();
-        btnConsultaTraslados = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
+        btnConsultaTraslados1 = new javax.swing.JButton();
         lblMenuPrincipal = new javax.swing.JLabel();
         lblNombreEmpresa = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
@@ -48,7 +49,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSolicitudEmpresas.setBackground(new java.awt.Color(255, 255, 255));
         btnSolicitudEmpresas.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnSolicitudEmpresas.setText("Solicitud Empresa");
         btnSolicitudEmpresas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -57,30 +57,27 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 btnSolicitudEmpresasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSolicitudEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 200, 70));
+        jPanel1.add(btnSolicitudEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 230, 100));
 
-        btnRegistrarProductos.setBackground(new java.awt.Color(255, 255, 255));
-        btnRegistrarProductos.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnRegistrarProductos.setText("Registrar Productos");
-        btnRegistrarProductos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnRegistrarProductos.setPreferredSize(new java.awt.Dimension(159, 29));
-        btnRegistrarProductos.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnCerrar.setText("Cerrar sesion");
+        btnCerrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarProductosActionPerformed(evt);
+                btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrarProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 200, 70));
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 70, 170, 40));
 
-        btnConsultaTraslados.setBackground(new java.awt.Color(255, 255, 255));
-        btnConsultaTraslados.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnConsultaTraslados.setText("Consulta Traslados");
-        btnConsultaTraslados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnConsultaTraslados.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultaTraslados1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnConsultaTraslados1.setText("Consulta Traslados");
+        btnConsultaTraslados1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnConsultaTraslados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultaTrasladosActionPerformed(evt);
+                btnConsultaTraslados1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConsultaTraslados, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 200, 70));
+        jPanel1.add(btnConsultaTraslados1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 230, 100));
 
         lblMenuPrincipal.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         lblMenuPrincipal.setForeground(new java.awt.Color(102, 102, 0));
@@ -112,7 +109,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      */
     private void btnSolicitudEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudEmpresasActionPerformed
         // TODO add your handling code here:
-        
+        FachadaLogica log= new FachadaLogica();
+        log.registrarInformacion();
         this.setVisible(false);
         FrmSeleccionEmpresa seleccion= new FrmSeleccionEmpresa(productorIniciado);
         seleccion.setVisible(true);
@@ -120,30 +118,21 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSolicitudEmpresasActionPerformed
 
     /**
-     * Método action performed que va a la pantalla de frmRegistrarProductos.
-     * @param evt parámetro evento
-     */
-    private void btnRegistrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProductosActionPerformed
-        // TODO add your handling code here:
-        
-        this.setVisible(false);
-        FrmRegistrarProductos registroProductos= new FrmRegistrarProductos(productorIniciado);
-        registroProductos.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnRegistrarProductosActionPerformed
-
-    /**
      * Método action performed que va a la pantalla de frmConsultaTraslado.
      * @param evt parámetro evento
      */
-    private void btnConsultaTrasladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaTrasladosActionPerformed
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         
         this.setVisible(false);
-        FrmConsultaTraslados traslados= new FrmConsultaTraslados(productorIniciado);
-        traslados.setVisible(true);
+        FrmLoginProductores login= new FrmLoginProductores();
+        login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnConsultaTrasladosActionPerformed
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnConsultaTraslados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaTraslados1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultaTraslados1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,8 +173,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      * Componentes del frame FrmMenuPrincipal
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsultaTraslados;
-    private javax.swing.JButton btnRegistrarProductos;
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnConsultaTraslados1;
     private javax.swing.JButton btnSolicitudEmpresas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblFondo;
