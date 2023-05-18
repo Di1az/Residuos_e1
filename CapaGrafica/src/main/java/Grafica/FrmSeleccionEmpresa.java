@@ -34,11 +34,12 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     List<Empresa_transportista> resultados = new ArrayList<>();
     //Atributo Inferfaz log
     ILogica log;
-    //
+    
     
 
     /**
-     * Método constructor
+     * Método constructor.
+     * @param productor parámetro productor
      */
     public FrmSeleccionEmpresa(Productor productor) {
         initComponents();
@@ -50,7 +51,7 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
     }
     
     /**
-     * Metodo que se encarga de buscar empresasTransportistas a consultar
+     * Metodo que se encarga de buscar empresasTransportistas a consultar.
      */
     private void buscarEmpresas() {
         String busqueda = txtBusqueda.getText();
@@ -190,6 +191,10 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tblResultadosMouseClicked
 
+    /**
+     * Método action performed del botón regresar, que regresa al menú principal.
+     * @param evt parámetro evento
+     */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -236,7 +241,9 @@ public class FrmSeleccionEmpresa extends javax.swing.JFrame {
 //        });
 //    }
 
-    //Variables de la clase innamovibles 
+    /**
+     * Componentes del frame FrmSeleccionEmpresa
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel blFondo;
     private javax.swing.JButton btnRegresar;

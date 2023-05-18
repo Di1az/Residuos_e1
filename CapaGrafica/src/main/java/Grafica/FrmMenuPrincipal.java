@@ -16,6 +16,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmMenuPrincipal
+     * @param productor parámetro productor
      */
     public FrmMenuPrincipal(Productor productor) {
         initComponents();
@@ -102,6 +103,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Método action performed que va a la pantalla de frmSolicitudEmpresas.
+     * @param evt parámetro evento
+     */
     private void btnSolicitudEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudEmpresasActionPerformed
         // TODO add your handling code here:
         ProductorDAO productorDAO = new ProductorDAO();
@@ -113,6 +118,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSolicitudEmpresasActionPerformed
 
+    /**
+     * Método action performed que va a la pantalla de frmRegistrarProductos.
+     * @param evt parámetro evento
+     */
     private void btnRegistrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProductosActionPerformed
         // TODO add your handling code here:
         ProductorDAO productorDAO = new ProductorDAO();
@@ -124,6 +133,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnRegistrarProductosActionPerformed
 
+    /**
+     * Método action performed que va a la pantalla de frmConsultaTraslado.
+     * @param evt parámetro evento
+     */
     private void btnConsultaTrasladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaTrasladosActionPerformed
         // TODO add your handling code here:
         
@@ -171,7 +184,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+    /**
+     * Componentes del frame FrmMenuPrincipal
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultaTraslados;
     private javax.swing.JButton btnRegistrarProductos;

@@ -28,7 +28,8 @@ import org.bson.types.ObjectId;
 public class ProductorDAO extends BaseDAO<Productor>{
     
     /**
-     * 
+     * Método guardar que tiene un  parámetro productor, que conecta con la
+     * base de datos y la colección e inserta al productor.
      * @param entidad parámetro entidad
      */
     @Override
@@ -38,7 +39,8 @@ public class ProductorDAO extends BaseDAO<Productor>{
     }
 
     /**
-     * 
+     * Método que busca todos los datos de la colección de traslados y la 
+     * inserta en un arraylist.
      * @return regresa una lista de productores
      */
     @Override
@@ -53,7 +55,8 @@ public class ProductorDAO extends BaseDAO<Productor>{
     }
     
     /**
-     * 
+     * Método que realiza la conexión con la base de datos y obtiene la colección
+     * de la misma la cual regresa.
      * @return regresa una coleccion de productores
      */
    @Override
@@ -64,7 +67,8 @@ public class ProductorDAO extends BaseDAO<Productor>{
     }
     
     /**
-     * 
+     * Método que tiene parámetros string e int, que busca todos los productores
+     * que tengan el mismo nombre ingresado y el mmismo número identificador.
      * @param nombre parámetro nombre
      * @param numero parámetro  número
      * @return regresa un booleano verdadero o falso

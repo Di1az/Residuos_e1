@@ -21,7 +21,8 @@ import java.util.List;
 public class FachadaDatos implements IDatos {
 
     /**
-     * 
+     * Método que obtiene un atributo de tipo producto y llama al método
+     * guardar de la clase productoDAO e inserta el producto a la base de datos.
      * @param producto parámetro producto
      */
     @Override
@@ -31,7 +32,8 @@ public class FachadaDatos implements IDatos {
     }
 
     /**
-     * 
+     * Método de tipo lista Producto, que regresa una lista de productos que 
+     * crea una instancia de la clase productoDAO y usa su método buscarTodos.
      * @return regresa una lista de productos dao.
      */
     @Override
@@ -41,7 +43,9 @@ public class FachadaDatos implements IDatos {
     }
 
     /**
-     * 
+     * Método de guardar empresa, que tiene un parámetro de tipo empresa 
+     * transportista y usa el método guardar de la clase empresaDAO que 
+     * inserta la empresa a la base.
      * @param empresa_transportista parámetro empresa transportista
      */
     @Override
@@ -51,7 +55,9 @@ public class FachadaDatos implements IDatos {
     }
 
     /**
-     * 
+     * Método de tipo lista empresa_transportista, que regresa una lista de 
+     * empresas transportistas que crea una instancia de la clase empresaDAO y 
+     * usa su método buscarTodos.
      * @return regresa una lista de empresas transportistas.
      */
     @Override
@@ -61,7 +67,9 @@ public class FachadaDatos implements IDatos {
     }
 
     /**
-     * 
+     * Método de guarda el productor, que tiene un parámetro de tipo productor 
+     * y usa el método guardar de la clase productorDAO que inserta el productor 
+     * a la base.
      * @param productor parámetro productor.
      */
     @Override
@@ -72,7 +80,9 @@ public class FachadaDatos implements IDatos {
     }
 
     /**
-     * 
+     * Método de tipo lista Productor, que regresa una lista de 
+     * productores que crea una instancia de la clase productorDAO y 
+     * usa su método buscarTodos.
      * @return regresa una lista de productores dao.
      */
     @Override
@@ -82,7 +92,9 @@ public class FachadaDatos implements IDatos {
     }
 
     /**
-     * 
+     * Método de guarda el residuo, que tiene un parámetro de tipo residuo 
+     * y usa el método guardar de la clase residuosDAO que inserta el residuo 
+     * a la base.
      * @param residuo parámetro residuo
      */
     @Override
@@ -92,7 +104,9 @@ public class FachadaDatos implements IDatos {
     }
 
     /**
-     * 
+     * Método de tipo lista residuo, que regresa una lista de 
+     * residuos que crea una instancia de la clase residuoDAO y 
+     * usa su método buscarTodos.
      * @return regresas una lista de residuos dao
      */
     @Override
@@ -102,7 +116,9 @@ public class FachadaDatos implements IDatos {
     }
 
     /**
-     * 
+     * Método de guarda el traslado, que tiene un parámetro de tipo traslado 
+     * y usa el método guardar de la clase trasladoDAO que inserta el traslado 
+     * a la base.
      * @param traslado parámetro traslado
      */
     @Override
@@ -112,7 +128,9 @@ public class FachadaDatos implements IDatos {
     }
 
     /**
-     * 
+     * Método de tipo lista traslado, que regresa una lista de 
+     * traslados que crea una instancia de la clase trasladoDAO y 
+     * usa su método buscarTodos.
      * @return regresas una lista de trasladosdao
      */
     @Override
@@ -122,7 +140,9 @@ public class FachadaDatos implements IDatos {
     }
     
     /**
-     * 
+     * Método que recibe como parámetro un string nombre y un int número que 
+     * válidan si el productor existe o no, en dado caso que sea así, regresa
+     * un verdadero para decir que puede entrar.
      * @param nombre parámetro nombre
      * @param numero parámetro número
      * @return regresa un booleano verdadero o falso

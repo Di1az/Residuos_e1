@@ -93,6 +93,11 @@ public class FachadaLogica implements ILogica{
          return cone.buscarTodos();
     }
 
+    /**
+     * Método que busca todos los traslados, que crea una instancia de 
+     * controlTraslado y llama al método buscarTodos de la clase.
+     * @return regresa una lista de traslados.
+     */
     @Override
     public List<Traslado> buscarTodosT() {
        ControlTraslado tras = new ControlTraslado();

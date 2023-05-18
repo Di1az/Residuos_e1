@@ -27,7 +27,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
 
     
     /**
-     * Metodo constructor de la clase
+     * Metodo constructor de la clase.
      */
     public FrmRegistroProductores() {
         initComponents();
@@ -39,7 +39,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
 
     /**
      * Metodo que se encarga de registrar al productor
-     * dependiendo de los datos puestos por el usuario
+     * dependiendo de los datos puestos por el usuario.
      */
     public void registrarProductor() {
         Productor p = new Productor();
@@ -199,8 +199,8 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * 
-     * @param evt 
+     * Nada.
+     * @param evt parámetro evento
      */
     private void txtNombreEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpresaActionPerformed
 
@@ -208,7 +208,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
 
     /**
      * Metodo que regresa al menu principal
-     * @param evt 
+     * @param evt parámetro evento
      */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
@@ -221,7 +221,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
     /**
      * Metodo que se encarga de llamar al metodo registrar productor
      * y confirma la accion
-     * @param evt 
+     * @param evt parámetro evento
      */
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
@@ -245,32 +245,32 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
-     * 
-     * @param evt 
+     * Llama al método validar nombre.
+     * @param evt parámetro evento
      */
     private void txtNombreProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProductorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreProductorActionPerformed
 
     /**
-     * 
-     * @param evt 
+     * Llama al método validar nombre.
+     * @param evt parámetro evento
      */
     private void txtNombreEmpresaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpresaKeyTyped
         validarNombre(evt);
     }//GEN-LAST:event_txtNombreEmpresaKeyTyped
 
     /**
-     * 
-     * @param evt 
+     * Llama al método validar nombre.
+     * @param evt parámetro evento
      */
     private void txtNombreProductorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductorKeyTyped
         validarNombre(evt);
     }//GEN-LAST:event_txtNombreProductorKeyTyped
 
     /**
-     * Cancelar accion
-     * @param evt 
+     * Cancelar acción.
+     * @param evt parámetro evento
      */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
@@ -325,7 +325,9 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+    /**
+     * Componentes del frame FrmRegistrarProductores
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton btnAceptar;

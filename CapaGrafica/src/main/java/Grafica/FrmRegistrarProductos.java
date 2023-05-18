@@ -16,6 +16,7 @@ public class FrmRegistrarProductos extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistrarProductos
+     * @param productor parámetro productor
      */
     public FrmRegistrarProductos(Productor productor) {
         initComponents();
@@ -78,6 +79,10 @@ public class FrmRegistrarProductos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Método actionPerformed que regresa al frame anterior.
+     * @param evt parámetro evento
+     */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
          this.setVisible(false);
@@ -123,7 +128,9 @@ public class FrmRegistrarProductos extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+    /**
+     * Componentes del frame FrmRegistrarProductos
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;

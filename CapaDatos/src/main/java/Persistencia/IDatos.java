@@ -18,62 +18,62 @@ import java.util.List;
  */
 public interface IDatos {
     /**
-     * 
+     * Método guardar producto.
      * @param producto parametro producto
      */
     public void guardarProducto(Producto producto);
     /**
-     * 
+     * Método lista producto.
      * @return regresa una lista de productos
      */
     public List<Producto> listaProducto();
     
     /**
-     * 
+     * Método guardar empresa.
      * @param empresa_transportista parámetro empresa transportista
      */
     public void guardarEmpresa(Empresa_transportista empresa_transportista);
     /**
-     * 
+     * Método lista empresa.
      * @return regresa una lista de empresas
      */
     public List<Empresa_transportista> listaEmpresas();
     
     /**
-     * 
+     * Método guardar productor.
      * @param productor parámetro productor
      */
     public void guardarProductor(Productor productor);
     /**
-     * 
+     * Método lista productor.
      * @return regresa una lista de productores
      */
     public List<Productor> listaProductor();
     
     /**
-     * 
+     * Método guardar residuo.
      * @param residuo parámetro residuo
      */
     public void guardarResiduo(Residuo residuo);
     /**
-     * 
+     * Método lista residuo.
      * @return regresa una lista de residuo
      */
     public List<Residuo> listaResiduo();
     
     /**
-     * 
+     * Método guardar traslado.
      * @param traslado parámetro traslado
      */
     public void guardarTraslado(Traslado traslado);
     /**
-     * 
+     * Método lista traslado.
      * @return regresa una lista de traslado
      */
     public List<Traslado> listaTraslado();
     
     /**
-     * 
+     * Método verificar productor.
      * @param nombre parámetro nombre
      * @param numero parámetro número
      * @return regresa un booleano de verdadero o falso

@@ -32,6 +32,10 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
         lblPopo.setText(productor.getNombreEmpresa());
     }
 
+    /**
+     * Método que busca el traslado y manda los datos a la tabla para que pueda
+     * introducir los valores.
+     */
      private void buscarTraslados() {
         
         resultados = log.buscarTodosT();
@@ -121,6 +125,10 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Método action event del botón regresar.
+     * @param evt parámetro evento
+     */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -165,7 +173,9 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+/**
+ * Componentes del frame FrmConsultaTraslados
+ */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;

@@ -21,20 +21,31 @@ import javax.swing.JOptionPane;
  * @author koine
  */
 public class CorreoDAO {
+    //Atributo de tipo properties, importado de una libreria de tipo properties
     private Properties properties;
 	
+        //Atributo estático contraseña, que es la contraseña del correo
 	private static String password = "qhmwutzmyjdcjfra";
+        //Atributo estático formato email, que es el correo
         private static String emailForm = "traslados.productos@gmail.com";
- 
+        
+        //Atributo de tipo session, importado de una libreria de tipo session
 	private Session session;
+        //Atributo de tipo message, importado de una libreria de tipo message
         private MimeMessage message;
 
+    /**
+     * Constructor vacío, que inicializa el atributo properties.
+     */
     public CorreoDAO() {
         properties = new Properties();
     }
         
         
-        
+        /**
+         * Método init, que settea las propiedades del puerto, protocolos, y etc,
+         * además agrega el tipo de dominio maneja, siendo, .gmail.com.
+         */
 	private void init() {
             
 		properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -61,6 +72,13 @@ public class CorreoDAO {
 //            properties.setProperty("mail.smtp.user", emailForm);
 //        }
  
+        /**
+         * Método que toma el string receptor y el String traslado cómo 
+         * parámetros y realiza el envio del correo al email de destino, 
+         * dependiendo de los parámetros de traslado.
+         * @param receptor parámetro receptor
+         * @param traslado parámetro traslado
+         */
 	public void sendEmail(String receptor, String traslado){
 		init();
 		try{

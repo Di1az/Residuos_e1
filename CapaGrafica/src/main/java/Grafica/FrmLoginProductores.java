@@ -21,6 +21,7 @@ public class FrmLoginProductores extends javax.swing.JFrame {
      * Variables de tipo ILogica y productor
      */
     private ILogica log;
+    //Atributo productor
     Productor p = new Productor();
 
     /**
@@ -50,7 +51,7 @@ public class FrmLoginProductores extends javax.swing.JFrame {
 
     /**
      * Metodo que se encarga de verificar que el productor ingresado se
-     * encuentre en la BD
+     * encuentre en la BD.
      */
     public void ingresarProductor() {
         if (log.verificarProductor(txtNombreProductor.getText(), Integer.parseInt(txtNumIdentificador.getText()))) {
@@ -170,16 +171,17 @@ public class FrmLoginProductores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     *
-     * @param evt
+     *Nada.
+     * @param evt parámetro evento
      */
     private void txtNumIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumIdentificadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumIdentificadorActionPerformed
 
     /**
-     *
-     * @param evt
+     * Método action event del botón registro que entra al frame de registro 
+     * productores.
+     * @param evt parámetro evento
      */
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
         // TODO add your handling code here:
@@ -191,8 +193,10 @@ public class FrmLoginProductores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroActionPerformed
 
     /**
-     *
-     * @param evt
+     * Método action event del botón login, que válida que los campos no estén 
+     * vacíos que llama al método ingresar Productor y verifica que existán en 
+     * la base de datos.
+     * @param evt parámetro evento
      */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
@@ -203,8 +207,8 @@ public class FrmLoginProductores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
-     *
-     * @param evt
+     * Método que válida que no se puedan poner letras en el número identificador.
+     * @param evt parámetro evento
      */
     private void txtNumIdentificadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumIdentificadorKeyTyped
         // TODO add your handling code here:
@@ -254,7 +258,9 @@ public class FrmLoginProductores extends javax.swing.JFrame {
             }
         });
     }
-
+    /**
+     * Componentes del frame FrmLoginProductores
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton btnLogin;

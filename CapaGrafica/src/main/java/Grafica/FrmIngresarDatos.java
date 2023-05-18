@@ -26,18 +26,24 @@ import javax.swing.JOptionPane;
  */
 public class FrmIngresarDatos extends javax.swing.JFrame {
 
+    //
     ILogica log;
+    //
     empresaDAO empresaDAO = new empresaDAO();
+    //
     ControlCorreo control = new ControlCorreo();
+    //
     float costoTotal = 0;
+    //
     Empresa_transportista empresa;
+    //
     private int numIdentificador;
 
     /**
      * Creates new form FrmIngresarDatos
      *
-     * @param empresa
-     * @param producto
+     * @param empresa parámetro empresa
+     * @param producto parámetro producto
      */
     public FrmIngresarDatos(Empresa_transportista empresa, Productor producto) {
         initComponents();
@@ -53,7 +59,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     /**
      * Metodo que solicita traslado y lo registra en la bd
      *
-     * @return
+     * @return regresa el traslado
      */
     public Traslado solicitudTraslado() {
         Traslado t = new Traslado();
@@ -88,10 +94,10 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
 //<<<<<<< Updated upstream
 
     /**
-     * Metodo que obtiene el texto del correo enviado
+     * Metodo que obtiene el texto del correo enviado.
      *
-     * @param t
-     * @return
+     * @param t parámetro t
+     * @return regresa un traslado
      */
     public String getTextoCorreo(Traslado t) {
         String traslado = "";
@@ -129,8 +135,8 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     /**
      * Metodo que se encarga de que la fecha estimada no sea menor al dia de hoy
      *
-     * @param fecha
-     * @return
+     * @param fecha parámetro fecha.
+     * @return regresa un booleano verdadero o falso.
      */
     public static boolean validarFecha(Date fecha) {
         Date hoy = new Date(); // Obtiene la fecha de hoy
@@ -277,7 +283,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     *
+     * Método action event del botón aceptar que agrega la solicitud en la base.
      * @param evt
      */
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
@@ -296,7 +302,7 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
-     * Metodo que elimina los datos agregados
+     * Metodo que elimina los datos agregados.
      *
      * @param evt
      */
@@ -323,8 +329,8 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
-     *
-     * @param evt
+     * Método action event del botón regresar, que regresa al frame anterior.
+     * @param evt parámetro evento
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -372,6 +378,9 @@ public class FrmIngresarDatos extends javax.swing.JFrame {
 //        });
 //    }
 
+    /**
+     * Componentes del frame FrmIngresarDatos
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;

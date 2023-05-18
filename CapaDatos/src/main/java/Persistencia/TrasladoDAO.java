@@ -20,7 +20,8 @@ import java.util.List;
 public class TrasladoDAO extends BaseDAO<Traslado>{
 
     /**
-     * 
+     * Método guardar que tiene un  parámetro traslado, que conecta con la
+     * base de datos y la colección e inserta el traslado.
      * @param entidad parámetro entidad
      */
     @Override
@@ -30,7 +31,8 @@ public class TrasladoDAO extends BaseDAO<Traslado>{
     }
 
     /**
-     * 
+     * Método que busca todos los datos de la colección de traslados y la 
+     * inserta en un arraylist.
      * @return regresa una lista de traslados
      */
     @Override
@@ -45,7 +47,7 @@ public class TrasladoDAO extends BaseDAO<Traslado>{
     }
 
     /**
-     * 
+     * Método que busca la colección y obtiene la misma.
      * @return regresa una coleccion de residuos.
      */
     @Override
