@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package com.mycompany.capalogica;
+import Dominio.Destino;
+import Dominio.Productor;
+import Dominio.Residuo;
+import Dominio.Traslado;
 import java.util.Date;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -12,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author koine
  */
-public class ControlValidaciones {
+public class ControlAplicacion {
     
     /**
      * Método que nos ayuda para que no existan vacíos dentro del cuadro de
@@ -47,6 +51,8 @@ public class ControlValidaciones {
 
         }
     }
+    
+    
     
     /**
      * Método que nos ayuda para que no existan vacíos dentro del cuadro de
@@ -140,6 +146,8 @@ public class ControlValidaciones {
 
         }
     }
+    
+    
     
     
     

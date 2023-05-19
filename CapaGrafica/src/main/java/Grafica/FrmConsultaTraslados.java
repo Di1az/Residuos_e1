@@ -8,11 +8,13 @@ import Dominio.Empresa_transportista;
 import Dominio.Productor;
 import Dominio.Traslado;
 import Persistencia.ProductorDAO;
+import subsistemaTraslado.ITraslado;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import subsistemaTraslado.FachadaTraslado;
 
 /**
  *
@@ -24,6 +26,7 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
     List<Traslado> resultados = new ArrayList<>();
     //Atributo Inferfaz log
     ILogica log;
+    ITraslado tras;
     
     Productor productorInicializado;
     /**
@@ -34,6 +37,7 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
         initComponents();
         this.productorInicializado = productor;
         log = new FachadaLogica();
+        tras=new FachadaTraslado();
         buscarTraslados();
     }
 
@@ -43,7 +47,7 @@ public class FrmConsultaTraslados extends javax.swing.JFrame {
      */
      private void buscarTraslados() {
         
-        resultados = log.buscarTodosT();
+        resultados = tras.buscarTodosT();
 
         //resultados = empresaDAO.desencriptarPersonaLista(resultados);
         // Realizar la consulta utilizando CriteriaBuilder según la opción seleccionada en cmbSeleccion

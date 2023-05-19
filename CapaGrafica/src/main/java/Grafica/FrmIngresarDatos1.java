@@ -12,9 +12,10 @@ import Dominio.Residuo;
 import Dominio.Traslado;
 import Persistencia.ProductorDAO;
 import Persistencia.empresaDAO;
-import com.mycompany.capalogica.ControlCorreo;
-import com.mycompany.capalogica.ControlTraslado;
-import com.mycompany.capalogica.ControlValidaciones;
+import subsistemaCorreo.ControlCorreo;
+import subsistemaTraslado.ControlTraslado;
+import subsistemaTraslado.ITraslado;
+import com.mycompany.capalogica.ControlAplicacion;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
 import java.util.Date;
@@ -23,6 +24,9 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import subsistemaCorreo.FachadaCorreo;
+import subsistemaCorreo.ICorreo;
+import subsistemaTraslado.FachadaTraslado;
 
 /**
  *
@@ -32,8 +36,10 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
 
     //
     private ILogica log;
+    ITraslado tras;
+    ICorreo correo;
     
-    private ControlValidaciones valid;
+    private ControlAplicacion apli;
     
     //Atributo costo total
     float costoTotal = 0;
@@ -43,6 +49,8 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
     private Productor productor;
     //Atributo empresa
     private Empresa_transportista empresa;
+    
+    private ControlAplicacion capi;
 
     /**
      * Creates new form FrmIngresarDatos
@@ -53,7 +61,9 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
     public FrmIngresarDatos1(Empresa_transportista empresa, Productor producto) {
         initComponents();
         log = new FachadaLogica();
-        valid = new ControlValidaciones();
+        tras = new FachadaTraslado();
+        correo = new FachadaCorreo();
+        apli = new ControlAplicacion();
         this.productor = producto;
 //        costoTotal = empresa.getCostoKM();
         lblNombreEmpresaProductor.setText(producto.getNombreEmpresa());
@@ -79,10 +89,10 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
      */
     public int obtenerTrasladosDia(Date fecha) {
         int count = 0;
-        ControlTraslado tra = new ControlTraslado();
+        
 
         // Supongamos que tienes una lista de traslados llamada "listaTraslados" que contiene todos los traslados registrados
-        for (Traslado traslado : tra.buscarTodos()) {
+        for (Traslado traslado : tras.buscarTodosT()) {
             // Comparar la fecha del traslado con la fecha especificada
             if (esMismoDia(traslado.getFecha_traslado(), fecha)) {
                 count++;
@@ -133,7 +143,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
         t.setCantidad_residuos(Integer.valueOf(txtCantidad.getText()));
         t.setFecha_traslado(new Date());
 
-        log.guardarTraslado(t);
+        tras.guardarTraslado(t);
 
         return t;
     }
@@ -155,7 +165,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
         String fechaEs = t.getFecha_traslado().toString();
         String cantidadR = this.txtCantidad.getText();
 
-        traslado = log.correoTexto(direccion, empresa.getNombre(), km, lblNombreEmpresaProductor.getText(), cmbProducto.getSelectedItem().toString(), cantidadR, fechaEs, empresa.getTipo_traslado());
+        traslado = correo.correoTexto(direccion, empresa.getNombre(), km, lblNombreEmpresaProductor.getText(), cmbProducto.getSelectedItem().toString(), cantidadR, fechaEs, empresa.getTipo_traslado());
 
         return traslado;
     }
@@ -167,7 +177,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
      * @return regreso
      */
     public boolean validarVacios() {
-        boolean error = valid.validarVaciosTraslado(this.txtCantidad.getText(), this.txtFechaNa.getDate()) ;
+        boolean error = apli.validarVaciosTraslado(this.txtCantidad.getText(), this.txtFechaNa.getDate()) ;
         return error;
     }
     
@@ -177,7 +187,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
      * @param evento
      */
     public void validarCaracteres(java.awt.event.KeyEvent evento){
-        valid.validarCaracteresTraslado(evento);
+        apli.validarCaracteresTraslado(evento);
     }
 
     /**
@@ -188,7 +198,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
      */
     public boolean validarFecha(Date fecha) {
 
-        boolean fech = valid.validarFechaTraslado(fecha);
+        boolean fech = apli.validarFechaTraslado(fecha);
 
         return fech; // Si la fecha es igual o posterior a la fecha de hoy, devuelve true
     }
@@ -383,7 +393,7 @@ public class FrmIngresarDatos1 extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Se agrego correctamente");
                     String traslado = getTextoCorreo(t);
 
-                    log.correoEnvio(empresa.getEmail(), traslado);
+                    correo.correoEnvio(empresa.getEmail(), traslado);
                     FrmMenuPrincipal menu = new FrmMenuPrincipal(productor);
                     menu.setVisible(true);
                     dispose();

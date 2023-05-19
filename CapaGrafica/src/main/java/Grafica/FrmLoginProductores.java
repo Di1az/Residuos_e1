@@ -6,7 +6,7 @@ package Grafica;
 
 import Dominio.Productor;
 import Persistencia.ProductorDAO;
-import com.mycompany.capalogica.ControlValidaciones;
+import com.mycompany.capalogica.ControlAplicacion;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
 import java.util.List;
@@ -22,7 +22,7 @@ public class FrmLoginProductores extends javax.swing.JFrame {
      * Variables de tipo ILogica y productor
      */
     private ILogica log;
-    private ControlValidaciones valid;
+    private ControlAplicacion valid;
     //Atributo productor
     Productor p = new Productor();
 
@@ -31,8 +31,9 @@ public class FrmLoginProductores extends javax.swing.JFrame {
      */
     public FrmLoginProductores() {
         initComponents();
+        
         log = new FachadaLogica();
-        valid = new ControlValidaciones();
+        valid = new ControlAplicacion();
     }
 
     /**
@@ -217,6 +218,7 @@ public class FrmLoginProductores extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (validarVacios()) {
             this.ingresarProductor();
+            log.registrarInformacion();
 
         }
     }//GEN-LAST:event_btnLoginActionPerformed

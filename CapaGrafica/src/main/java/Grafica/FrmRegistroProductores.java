@@ -7,7 +7,7 @@ package Grafica;
 import Dominio.Productor;
 import Dominio.Residuo;
 import Persistencia.ProductorDAO;
-import com.mycompany.capalogica.ControlValidaciones;
+import com.mycompany.capalogica.ControlAplicacion;
 import com.mycompany.capalogica.FachadaLogica;
 import com.mycompany.capalogica.ILogica;
 import java.util.List;
@@ -26,7 +26,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
      */
     private int numIdentificador;
     private ILogica log;
-    private ControlValidaciones valid;
+    private ControlAplicacion valid;
     
     /**
      * Metodo constructor de la clase.
@@ -37,7 +37,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
         numIdentificador = random.nextInt(1000);
         jLabel3.setText(String.valueOf(numIdentificador));
         log = new FachadaLogica();
-        valid = new ControlValidaciones();
+        valid = new ControlAplicacion();
     }
 
     /**
@@ -247,7 +247,7 @@ public class FrmRegistroProductores extends javax.swing.JFrame {
 
         if (result == JOptionPane.OK_OPTION) {
             FachadaLogica log= new FachadaLogica();
-        log.registrarInformacion();
+        
             this.setVisible(false);
             FrmLoginProductores login = new FrmLoginProductores();
             login.setVisible(true);
